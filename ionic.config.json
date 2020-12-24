@@ -1,0 +1,7 @@
+{
+  "name": "eneagram",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

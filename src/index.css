@@ -1,0 +1,354 @@
+.logo {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.FormikField {
+  margin: 10px 0;
+}
+
+.App {
+  /* background: white; */
+  border-radius: 10px;
+  width: 500px;
+  padding: 50px;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.login {
+  position:relative;
+ background: url('./bg-login.jpg') ; 
+filter: blur(1px);
+ background-size: cover;
+ background-repeat: no-repeat;
+ height: 100vh;
+
+} 
+
+ .login-content {
+   position: absolute;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0, 0, 0, 0.664) ; 
+    --background: transparent;
+  
+  }
+ 
+  .login-input{
+    
+    background-color: black;
+    /* color: white; */
+    opacity: 0.8;
+    border-radius: 25px;
+    padding: 20px;  
+    text-align: center;
+   
+  }
+
+
+  .login-item{
+    padding-bottom: 2px;
+    
+    --highlight-color-focused: none;
+    border-style:hidden;
+   
+  }
+ 
+.login-row{
+  
+  height: 90vh;
+  /* padding-bottom: 10%; */
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
+}
+
+.user-icon{
+  position: relative;
+  padding-left: 15px;
+  padding-right: -10px;
+}
+
+.input-container{
+position: absolute;
+width: 95%;
+
+}
+.icon-container{
+position:relative;
+
+}
+
+.login-header{
+  color: #d4af37;
+padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Intro css */
+
+.intro-slide{
+  height: 90vh;
+}
+
+
+
+
+/* Dashboard   CSS */
+
+
+
+.dashboard-card-img-container{
+  
+  position: absolute;
+  height: 100%;
+  /* border-radius:30px !important; */
+  /* border-radius: 10px 10px 0px 0px; */
+  /* background-image: linear-gradient(to right top, #ff0a6b, #ee334a, #d8492f, #c05919, #a66309, #aa5a03, #ad5001, #b14503, #cf002f, #da0066, #bf00b0, #2d27ff); */
+
+}
+.dashboard-card{
+  margin-left: 0;
+  margin-right: 0;
+  height: 100%;
+  display: flex;
+  border-radius: 10px 10px 10px 10px;
+  /* -webkit-box-shadow: 0 10px 6px -6px rgb(109, 103, 103);
+     -moz-box-shadow: 0 10px 6px -6px rgb(54, 49, 49);
+          box-shadow: 0 10px 6px -6px rgb(46, 42, 42); */
+}
+.dashboard-card-content{
+  display: flex;
+  position: relative;
+  /* color: white; */
+  z-index: 10;
+  /* background-color: rgb(0,0,0); 
+  background-color: rgba(0, 0, 0, 0.747) ;  */
+  background-image:
+    linear-gradient(to bottom, rgba(136, 97, 12, 0.884), rgba(202, 159, 17, 0.897))
+    ;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.dashboard-card-header{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard-card-left1{
+  height: 40%;
+}
+.dashboard-card-left2{
+  height: 60%;
+}
+.dashboard-card-right1{
+  height: 60%;
+
+}
+.dashboard-card-right2{
+  height: 40%;
+
+}
+
+.dashboard-grid{
+  height: 90vh;
+  /* padding: 0px 0px 10px 0px; */
+  
+}
+.dashboard-row-top{
+  height: 20%;
+}
+.dashboard-row-bottom{
+  height: 70%;
+}
+
+.dashboard-content{
+  overflow:hidden;
+}
+.header{
+  background-image:
+  linear-gradient(to bottom, rgba(136, 97, 12, 0.884), rgba(202, 159, 17, 0.897));
+  background-size: cover;
+  border-radius: 0px 0px 20px 20px;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+.dashboard-card-container{
+  height: 100%;
+}
+
+.dashboard-grid{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-grid-container{
+height: 75vh;
+padding: 0;
+}
+
+
+/* home css */
+.home-avatar{
+ /* height: 50%;
+ width: 50%; */
+}
+
+
+.home-card-img-container{
+  
+  position: absolute;
+  height: 100%;
+  /* border-radius:30px !important; */
+  /* border-radius: 10px 10px 0px 0px; */
+  /* background-image: linear-gradient(to right top, #ff0a6b, #ee334a, #d8492f, #c05919, #a66309, #aa5a03, #ad5001, #b14503, #cf002f, #da0066, #bf00b0, #2d27ff); */
+
+}
+.home-card{
+  margin: 0;
+  height: 100%;
+  border-radius: 10px 10px 10px 10px;
+  /* -webkit-box-shadow: 0 10px 6px -6px rgb(109, 103, 103);
+     -moz-box-shadow: 0 10px 6px -6px rgb(54, 49, 49);
+          box-shadow: 0 10px 6px -6px rgb(46, 42, 42); */
+}
+
+.home-card-header{
+  background-image:
+    linear-gradient(to bottom, rgba(136, 97, 12, 0.884), rgba(202, 159, 17, 0.897));
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+.home-card-content{
+  background-color: rgb(48, 47, 47);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* color: white; */
+  z-index: 10;
+  /* background-color: rgb(0,0,0); 
+  background-color: rgba(0, 0, 0, 0.747) ;  */
+
+}
+
+.home-title-card-header{
+  height: 120px;
+}
+
+.home-card-content-text{
+  color: white;
+  padding-top: 10px;
+}
+
+.home-title-container, .home-title-card{
+  display: flex;
+  width: 100%;
+
+}
+
+
+.home-title-content{
+  background-image:
+  linear-gradient(to bottom, rgba(136, 97, 12, 0.884), rgba(202, 159, 17, 0.897)),
+  url('./bg-card.jpg');
+  background-size: cover;
+  /* border: solid; */
+  justify-content: center;
+  border-radius: 10px;
+  width: 100%;
+  
+}
+
+.home-title-card-number-number{
+  color: white;
+}
+.home-title-card-title-title{
+  color: white;
+}
+
+.home-title-card-title, .home-title-card-number{
+  text-align: center;
+
+}
+.home-title-card{
+  margin-bottom: 0;
+}
+.home-col-title-left{
+
+justify-content:flex-end;
+display: flex;
+flex-direction: column;
+height: 100%;
+}
+
+.home-name{
+  margin-bottom:0;
+}
+.home-email{
+font-size: 11px;
+margin: 0;
+
+}
+.no-padding{
+  padding: 0;
+}
+
+.personalitie-avatar-container{
+  padding: 0px;
+  display: flex;
+}
+.personalitie1{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 15px 5px 15px;
+}
+
+.personalities-container{
+  padding: 0;
+}
+
+/* Description Enneagram css */
+
+.description-card-content{
+  justify-content: center;
+  text-align: center;
+  display: flex;
+ 
+
+}
+.description-card-content-container{
+height: 100%;
+padding: 20px;  
+}
