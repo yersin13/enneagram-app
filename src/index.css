@@ -213,12 +213,13 @@ height: 75vh;
 padding: 0;
 }
 
+.dashboard-test-button{
+  background-image:linear-gradient(to bottom, rgba(136, 97, 12, 0.884), rgba(202, 159, 17, 0.897));
+}
+
 
 /* home css */
-.home-avatar{
- /* height: 50%;
- width: 50%; */
-}
+
 
 
 .home-card-img-container{
@@ -230,7 +231,7 @@ padding: 0;
   /* background-image: linear-gradient(to right top, #ff0a6b, #ee334a, #d8492f, #c05919, #a66309, #aa5a03, #ad5001, #b14503, #cf002f, #da0066, #bf00b0, #2d27ff); */
 
 }
-.home-card{
+.home-card, .test-card, .test-card-quetionary-1, .test-card-quetionary-2{
   margin: 0;
   height: 100%;
   border-radius: 10px 10px 10px 10px;
@@ -239,14 +240,14 @@ padding: 0;
           box-shadow: 0 10px 6px -6px rgb(46, 42, 42); */
 }
 
-.home-card-header{
+.home-card-header, .test-card-header {
   background-image:
     linear-gradient(to bottom, rgba(136, 97, 12, 0.884), rgba(202, 159, 17, 0.897));
     background-size: cover;
     height: 100%;
     width: 100%;
 }
-.home-card-content{
+.home-card-content, .test-card-content {
   background-color: rgb(48, 47, 47);
   border-radius: 10px;
   display: flex;
@@ -263,7 +264,7 @@ padding: 0;
   height: 120px;
 }
 
-.home-card-content-text{
+.home-card-content-text, .test-card-content-text {
   color: white;
   padding-top: 10px;
 }
@@ -351,4 +352,19 @@ margin: 0;
 .description-card-content-container{
 height: 100%;
 padding: 20px;  
+}
+
+/* Test Css */
+
+.test-card-content-container, .test-card-content {
+  padding: 0;
+}
+
+.test-select{
+  background-color: rgb(117, 114, 114);
+  color: black;
+}
+.test-selec-box{
+  background-color: white;
+  color: black;
 }

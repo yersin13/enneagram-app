@@ -126,7 +126,7 @@ const Dashboard: React.FC = () => {
         </div>
   
           <div>  
-   <IonButton className="" routerLink="/my/home" expand='block' >Take the test</IonButton>
+   <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the test</IonButton>
    </div>
       </IonContent>
     </IonPage>
