@@ -23,7 +23,7 @@ const TestResult: React.FC = () => {
   useEffect(()=>{
    const entriesRef =  firestore.collection('users').doc(userId)
       .collection('Enneagram');
-    return entriesRef.orderBy('date').limit(2)
+    return entriesRef.orderBy('date',"desc").limit(1)
     .onSnapshot(({docs}) => setEntries(docs.map(toEntry)));
   },[userId]);
   console.log(entries);

@@ -29,7 +29,7 @@ import { useAuth } from '../../auth';
 import { firestore } from '../../firebase';
 import { Redirect, useHistory } from 'react-router';
 import { date } from 'yup/lib/locale';
-
+import dayjs from 'dayjs'
 
 
 interface IFormInputs {
@@ -37,7 +37,9 @@ interface IFormInputs {
   SegundaRespuesta: string;
 
 }
-
+function formatDate(isoString){
+  return dayjs(isoString).format('D MMM YYYY H m ss');
+}
 
 
 const Test: React.FC = () => {
@@ -47,7 +49,7 @@ const Test: React.FC = () => {
   const [PrimeraRespuesta, setPrimeraRespuesta] = useState<string>();
   const [SegundaRespuesta, setSegundaRespuesta] = useState<string>();
 
-
+const dateNow= formatDate(Date.now());
 
 
   const FormSchema = yup.object().shape({
@@ -68,19 +70,18 @@ const Test: React.FC = () => {
       console.log('Eneatype 7')
       const entriesRef = firestore.collection('users').doc(userId)
         .collection('Enneagram');
-      const entryData = { Enneatype: "7",date: Date.now() };
+      const entryData = { Enneatype: "7",date: dateNow };
       const entryRef = await entriesRef.add(entryData);
       console.log('saved', entryRef.id);
       history.push("/my/test-result");
       setStatus({ loading: false, error: false });
-      
     } else
       if (data.PrimeraRespuesta == "A" && data.SegundaRespuesta == "Y") {
         setStatus({ loading: true, error: false });
         console.log('Eneatype 8');
         const entriesRef = firestore.collection('users').doc(userId)
           .collection('Enneagram');
-        const entryData = { Enneatype: "8" ,date: Date.now() };
+        const entryData = { Enneatype: "8" ,date: dateNow };
         const entryRef = await entriesRef.add(entryData);
         history.push("/my/test-result");
         setStatus({ loading: false, error: false });
@@ -90,7 +91,7 @@ const Test: React.FC = () => {
           console.log('Eneatype 3')
           const entriesRef = firestore.collection('users').doc(userId)
             .collection('Enneagram');
-          const entryData = { Enneatype: "3" ,date: Date.now() };
+          const entryData = { Enneatype: "3" ,date: dateNow };
           const entryRef = await entriesRef.add(entryData);
           history.push("/my/test-result");
           setStatus({ loading: false, error: false });
@@ -100,7 +101,7 @@ const Test: React.FC = () => {
             console.log('Eneatype 9')
             const entriesRef = firestore.collection('users').doc(userId)
               .collection('Enneagram');
-            const entryData = { Enneatype: "9" ,date: Date.now() };
+            const entryData = { Enneatype: "9" ,date: dateNow };
             const entryRef = await entriesRef.add(entryData);
             history.push("/my/test-result");
             setStatus({ loading: false, error: false });
@@ -111,7 +112,7 @@ const Test: React.FC = () => {
               console.log('Eneatype 4')
               const entriesRef = firestore.collection('users').doc(userId)
                 .collection('Enneagram');
-              const entryData = { Enneatype: "4" ,date: Date.now() };
+              const entryData = { Enneatype: "4" ,date: dateNow };
               const entryRef = await entriesRef.add(entryData);
               history.push("/my/test-result");
               setStatus({ loading: false, error: false });
@@ -121,7 +122,7 @@ const Test: React.FC = () => {
                 console.log('Eneatype 5')
                 const entriesRef = firestore.collection('users').doc(userId)
                   .collection('Enneagram');
-                const entryData = { Enneatype: "5" ,date: Date.now() };
+                const entryData = { Enneatype: "5" ,date: dateNow };
                 const entryRef = await entriesRef.add(entryData);
                 history.push("/my/test-result");
                 setStatus({ loading: false, error: false });
@@ -131,7 +132,7 @@ const Test: React.FC = () => {
                   console.log('Eneatype 2')
                   const entriesRef = firestore.collection('users').doc(userId)
                     .collection('Enneagram');
-                  const entryData = { Enneatype: "2" ,date: Date.now() };
+                  const entryData = { Enneatype: "2" ,date: dateNow };
                   const entryRef = await entriesRef.add(entryData);
                   history.push("/my/test-result");
                   setStatus({ loading: false, error: false });
@@ -141,7 +142,7 @@ const Test: React.FC = () => {
                     console.log('Eneatype 6')
                     const entriesRef = firestore.collection('users').doc(userId)
                       .collection('Enneagram');
-                    const entryData = { Enneatype: "6" ,date: Date.now() };
+                    const entryData = { Enneatype: "6" ,date: dateNow };
                     const entryRef = await entriesRef.add(entryData);
                     history.push("/my/test-result");
                     setStatus({ loading: false, error: false });
@@ -151,7 +152,7 @@ const Test: React.FC = () => {
                       console.log('Eneatype 1')
                       const entriesRef = firestore.collection('users').doc(userId)
                         .collection('Enneagram');
-                      const entryData = { Enneatype: "1" ,date: Date.now() };
+                      const entryData = { Enneatype: "1" ,date: dateNow };
                       const entryRef = await entriesRef.add(entryData);
                       history.push("/my/test-result");
                       setStatus({ loading: false, error: false });
