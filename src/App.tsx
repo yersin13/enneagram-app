@@ -11,8 +11,11 @@ import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/login-register/RegisterPage';
 
 
-import NovaEntryPage from './pages/AAddEntryPage copy';
+
 import { SlidesIntro } from './pages/SlidesIntro';
+import IntroTest from './pages/Test-enneagram/IntroTest';
+import TestResult from './pages/Test-enneagram/TestResult';
+
 
 
 
@@ -31,8 +34,11 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LoginPage />
       </Route>
-      <Route exact path="/form">
-          <NovaEntryPage />
+      <Route exact path="/my/intro-test">
+        <IntroTest/>
+      </Route>
+      <Route exact path="/my/test-result">
+        <TestResult/>
       </Route>
       <Route exact path="/intro">
           <SlidesIntro />

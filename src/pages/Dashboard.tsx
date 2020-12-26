@@ -34,12 +34,15 @@ const Dashboard: React.FC = () => {
 
       <IonHeader >
         <IonToolbar className="header">
-          <IonTitle>Your Dashboard
+          <IonTitle>Your Dashboard 
           </IonTitle>
 
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding dashboard-content">
+      <div>  
+   <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test</IonButton>
+   </div>
         <div className="dashboard-grid-container ">
         <IonGrid className="dashboard-grid">
             <IonRow className="dashboard-row-top" >
@@ -125,9 +128,7 @@ const Dashboard: React.FC = () => {
           </IonGrid>
         </div>
   
-          <div>  
-   <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the test</IonButton>
-   </div>
+         
       </IonContent>
     </IonPage>
   );

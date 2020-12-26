@@ -367,4 +367,17 @@ padding: 20px;
 .test-selec-box{
   background-color: white;
   color: black;
+
+}
+
+.test-instructions{
+  padding: 10px;
+  color: rgb(236, 219, 60);
+  text-align: center;
+}
+
+.test-selection-error{
+  padding: 10px;
+  color: rgb(219, 52, 52);
+  text-align: center;
 }

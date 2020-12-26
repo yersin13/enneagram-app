@@ -4,9 +4,9 @@ import {
 import { home as homeIcon, settings as settingsIcon, planetOutline as planetIcon, home } from 'ionicons/icons'
 import React from 'react';
 import { Redirect, Route} from 'react-router-dom';
-import HomePage from './pages/HomePage';
+
 import SettingsPage from './pages/SettingsPage';
-import EntryPage from './pages/EntryPage';
+
 import { useAuth } from './auth';
 import AddEntryPage from './pages/AddEntryPage';
 import Dashboard from './pages/Dashboard';
@@ -36,18 +36,14 @@ const AppTabs: React.FC = () => {
       <Route exact path="/my/DescriptionEnneagram">
         <DescriptionEnneagram/>
       </Route>
-      <Route exact path="/my/intro-test">
-        <IntroTest/>
-      </Route>
+     
       <Route exact path="/my/test">
         <Test/>
       </Route>
       <Route exact path="/my/home">
         <Home/>
       </Route>
-      <Route exact path="/my/entries/view/:id">
-        <EntryPage/>
-      </Route>
+   
       <Route exact path="/my/entries/add">
         <AddEntryPage/>
       </Route>

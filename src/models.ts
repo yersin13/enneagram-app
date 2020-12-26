@@ -1,10 +1,14 @@
 
+
 export interface Entry {
     id: string;
-    date: string;
-    title: string;  
-    pictureUrl: string;
-    description: string;
+    Enneatype:string;
+    PrimeraRespuesta: string;
+    SegundaRespuesta: string;
+    date:string;
+   
+  
+
 }
 
 export function toEntry(doc): Entry{
