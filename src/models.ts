@@ -6,6 +6,10 @@ export interface Entry {
     PrimeraRespuesta: string;
     SegundaRespuesta: string;
     date:string;
+    description:string;
+    quote: string;
+    title:string;
+   
    
   
 
@@ -14,5 +18,6 @@ export interface Entry {
 export function toEntry(doc): Entry{
    return {id: doc.id, ...doc.data()};
 }
+
 
 // doc: firebase.firestore.DocumentSnapshot
