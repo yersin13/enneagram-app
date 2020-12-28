@@ -9,11 +9,10 @@ export interface Entry {
     description:string;
     quote: string;
     title:string;
-   
-   
-  
+ 
 
 }
+
 
 export function toEntry(doc): Entry{
    return {id: doc.id, ...doc.data()};

@@ -4,6 +4,7 @@ import { useAuth } from '../../auth';
 import { firestore } from '../../firebase';
 import { Entry,  toEntry } from '../../models';
 import { useParams } from 'react-router';
+import { array } from 'yup/lib/locale';
 
 
 // Optional parameters to pass to the swiper instance.
@@ -15,13 +16,22 @@ const slideOpts = {
 
 interface RouteParams {
   id: string;
+    Enneatype:string;
+    PrimeraRespuesta: string;
+    SegundaRespuesta: string;
+    date:string;
+    description:string;
+    quote: string;
+    title:string;
 }
+
+
 
 const TestResult: React.FC = () => {
   const { userId } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
-  const [final, setFinal] = useState();
+  const [final, setFinal] = useState<Entry[]>();
   const [idea, setIdea] =useState();
 
   useEffect(() => {
@@ -33,38 +43,38 @@ const TestResult: React.FC = () => {
   }, [userId]);
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
   console.log(entries)
-  console.log(number)
+  // console.log(number)
   // --------------------------------------->
   // -------------------------->
 
 
   useEffect(() => {
     const entriesRefEnneagram = firestore.collection('EnneagramDescription')
-    return entriesRefEnneagram.orderBy('quote').limit(9)
-      .onSnapshot(({ docs }) => setEntry(docs.map(toEntry)));
+  
+      entriesRefEnneagram.get()
+      .then(({ docs }) => setEntry(docs.map(toEntry)));
+  }, []);
+  console.log(entry)
+//   // ------------------------>
 
-  }, [number]);
-  // console.log(entry)
-  // ------------------------>
+
+
   function search(nameKey, myArray){
     for (var i=0; i < myArray.length; i++) {
         if (myArray[i].id === nameKey) {
-            return Object.keys(myArray[i]);
+          
+            return myArray[i]
         }
     }
 }
   useEffect(() => {
-   setFinal(search(number,entry))
+    setFinal(search(number,entry))
   }, [number, entry]);
-
-console.log(Object.keys(final))
-
-
-
-
-
-
-
+  const title = entry.map(({title}) => title)[number]
+  const quote = entry.map(({quote}) => quote)[number]
+  const description = entry.map(({description}) => description)[number]
+ 
+console.log(title)
 
 
 
@@ -84,10 +94,11 @@ console.log(Object.keys(final))
                 <p>
                   Your Enneatype is:
               </p>
-                {entries.map((entry) =>
-                  <h1>{entry.Enneatype}</h1>
-                )}
-               
+                
+                  <h1>{title}</h1>
+                  <h1>{quote}</h1>
+                  <br/>
+                  <h1>{description}</h1>
 
                 <p>Go home and check the update information we have for you</p>
               </div>
