@@ -63,7 +63,7 @@ const dateNow= formatDate(Date.now());
 
   const onSubmit = async (data: Entry) => {
     console.log(data);
-    if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta == "X") {
+    if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta === "X") {
       setStatus({ loading: true, error: false });
       console.log('Eneatype 7')
       const entriesRef = firestore.collection('users').doc(userId)
@@ -74,7 +74,7 @@ const dateNow= formatDate(Date.now());
       history.push("/my/test-result");
       setStatus({ loading: false, error: false });
     } else
-      if (data.PrimeraRespuesta == "A" && data.SegundaRespuesta == "Y") {
+      if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta === "Y") {
         setStatus({ loading: true, error: false });
         console.log('Eneatype 8');
         const entriesRef = firestore.collection('users').doc(userId)
@@ -84,7 +84,7 @@ const dateNow= formatDate(Date.now());
         history.push("/my/test-result");
         setStatus({ loading: false, error: false });
       } else
-        if (data.PrimeraRespuesta == "A" && data.SegundaRespuesta == "Z") {
+        if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta === "Z") {
           setStatus({ loading: true, error: false });
           console.log('Eneatype 3')
           const entriesRef = firestore.collection('users').doc(userId)
@@ -94,7 +94,7 @@ const dateNow= formatDate(Date.now());
           history.push("/my/test-result");
           setStatus({ loading: false, error: false });
         } else
-          if (data.PrimeraRespuesta == "B" && data.SegundaRespuesta == "X") {
+          if (data.PrimeraRespuesta === "B" && data.SegundaRespuesta === "X") {
             setStatus({ loading: true, error: false });
             console.log('Eneatype 9')
             const entriesRef = firestore.collection('users').doc(userId)
@@ -105,7 +105,7 @@ const dateNow= formatDate(Date.now());
             setStatus({ loading: false, error: false });
 
           } else
-            if (data.PrimeraRespuesta == "B" && data.SegundaRespuesta == "Y") {
+            if (data.PrimeraRespuesta === "B" && data.SegundaRespuesta === "Y") {
               setStatus({ loading: true, error: false });
               console.log('Eneatype 4')
               const entriesRef = firestore.collection('users').doc(userId)
@@ -115,7 +115,7 @@ const dateNow= formatDate(Date.now());
               history.push("/my/test-result");
               setStatus({ loading: false, error: false });
             } else
-              if (data.PrimeraRespuesta == "B" && data.SegundaRespuesta == "Z") {
+              if (data.PrimeraRespuesta === "B" && data.SegundaRespuesta === "Z") {
                 setStatus({ loading: true, error: false });
                 console.log('Eneatype 5')
                 const entriesRef = firestore.collection('users').doc(userId)
@@ -125,7 +125,7 @@ const dateNow= formatDate(Date.now());
                 history.push("/my/test-result");
                 setStatus({ loading: false, error: false });
               } else
-                if (data.PrimeraRespuesta == "C" && data.SegundaRespuesta == "X") {
+                if (data.PrimeraRespuesta === "C" && data.SegundaRespuesta === "X") {
                   setStatus({ loading: true, error: false });
                   console.log('Eneatype 2')
                   const entriesRef = firestore.collection('users').doc(userId)
@@ -135,7 +135,7 @@ const dateNow= formatDate(Date.now());
                   history.push("/my/test-result");
                   setStatus({ loading: false, error: false });
                 } else
-                  if (data.PrimeraRespuesta == "C" && data.SegundaRespuesta == "Y") {
+                  if (data.PrimeraRespuesta === "C" && data.SegundaRespuesta === "Y") {
                     setStatus({ loading: true, error: false });
                     console.log('Eneatype 6')
                     const entriesRef = firestore.collection('users').doc(userId)
@@ -145,7 +145,7 @@ const dateNow= formatDate(Date.now());
                     history.push("/my/test-result");
                     setStatus({ loading: false, error: false });
                   } else
-                    if (data.PrimeraRespuesta == "C" && data.SegundaRespuesta == "Z") {
+                    if (data.PrimeraRespuesta === "C" && data.SegundaRespuesta === "Z") {
                       setStatus({ loading: true, error: false });
                       console.log('Eneatype 1')
                       const entriesRef = firestore.collection('users').doc(userId)

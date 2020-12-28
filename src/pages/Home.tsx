@@ -50,11 +50,15 @@ const Home: React.FC = () => {
 
 //   // ------------------------>
 
-  const title = entry.map(({title}) => title)[number]
-  const quote = entry.map(({quote}) => quote)[number]
-  const description = entry.map(({description}) => description)[number]
-  const numberType = entry.map(({numberType}) => numberType)[number]
-  const link = entry.map(({link}) => link)[number]
+const index = entry.findIndex(x => x.id === number);
+ 
+console.log(index)
+
+  const title = entry.map(({title}) => title)[index]
+  const quote = entry.map(({quote}) => quote)[index]
+  const description = entry.map(({description}) => description)[index]
+  const numberType = entry.map(({numberType}) => numberType)[index]
+  const link = entry.map(({link}) => link)[index]
 
 
 

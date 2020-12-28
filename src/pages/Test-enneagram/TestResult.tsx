@@ -40,27 +40,15 @@ const TestResult: React.FC = () => {
       entriesRefEnneagram.get()
       .then(({ docs }) => setEntry(docs.map(toEntry)));
   }, []);
-  console.log(entry)
+  console.log(entry);
 //   // ------------------------>
 
 
-
-//   function search(nameKey, myArray){
-//     for (var i=0; i < myArray.length; i++) {
-//         if (myArray[i].id === nameKey) {
-          
-//             return myArray[i]
-//         }
-//     }
-// }
-//   useEffect(() => {
-//     setFinal(search(number,entry))
-//   }, []);
-  const title = entry.map(({title}) => title)[number]
+// look in the array for a match and return the index then use the index to extrac elements
+const index = entry.findIndex(x => x.title === "The Peacemaker");
  
- 
-console.log(title)
-
+console.log(index)
+const title = entry.map(({title}) => title)[index]
 
 
   return (
