@@ -6,7 +6,6 @@ import {
   IonCardTitle,
   IonContent,
   IonHeader,
-  IonIcon,
   IonItem,
   IonItemDivider,
   IonLabel,
@@ -17,7 +16,6 @@ import {
   IonSelectOption,
   IonTitle,
   IonToast,
-  IonToggle,
   IonToolbar,
 } from '@ionic/react';
 import React, { useState } from 'react';
@@ -27,8 +25,8 @@ import * as yup from "yup";
 import { Entry } from '../../models';
 import { useAuth } from '../../auth';
 import { firestore } from '../../firebase';
-import { Redirect, useHistory } from 'react-router';
-import { date } from 'yup/lib/locale';
+import { useHistory } from 'react-router';
+
 import dayjs from 'dayjs'
 
 
@@ -65,7 +63,7 @@ const dateNow= formatDate(Date.now());
 
   const onSubmit = async (data: Entry) => {
     console.log(data);
-    if (data.PrimeraRespuesta == "A" && data.SegundaRespuesta == "X") {
+    if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta == "X") {
       setStatus({ loading: true, error: false });
       console.log('Eneatype 7')
       const entriesRef = firestore.collection('users').doc(userId)

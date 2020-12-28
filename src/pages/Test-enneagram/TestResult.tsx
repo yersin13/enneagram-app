@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { IonSlides, IonSlide, IonContent, IonPage, IonItem, IonButton, IonToolbar, IonButtons, IonBackButton, IonTitle, IonFab, IonFabButton, IonIcon } from '@ionic/react';
+import { IonSlides, IonSlide, IonContent, IonPage, IonButton,   } from '@ionic/react';
 import { useAuth } from '../../auth';
 import { firestore } from '../../firebase';
 import { Entry,  toEntry } from '../../models';
-import { useParams } from 'react-router';
-import { array } from 'yup/lib/locale';
+
 
 
 // Optional parameters to pass to the swiper instance.
@@ -14,25 +13,12 @@ const slideOpts = {
   speed: 400
 };
 
-interface RouteParams {
-  id: string;
-    Enneatype:string;
-    PrimeraRespuesta: string;
-    SegundaRespuesta: string;
-    date:string;
-    description:string;
-    quote: string;
-    title:string;
-}
-
 
 
 const TestResult: React.FC = () => {
   const { userId } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
-  const [final, setFinal] = useState<Entry[]>();
-  const [idea, setIdea] =useState();
 
   useEffect(() => {
     const entriesRef = firestore.collection('users').doc(userId)
@@ -59,20 +45,19 @@ const TestResult: React.FC = () => {
 
 
 
-  function search(nameKey, myArray){
-    for (var i=0; i < myArray.length; i++) {
-        if (myArray[i].id === nameKey) {
+//   function search(nameKey, myArray){
+//     for (var i=0; i < myArray.length; i++) {
+//         if (myArray[i].id === nameKey) {
           
-            return myArray[i]
-        }
-    }
-}
-  useEffect(() => {
-    setFinal(search(number,entry))
-  }, [number, entry]);
+//             return myArray[i]
+//         }
+//     }
+// }
+//   useEffect(() => {
+//     setFinal(search(number,entry))
+//   }, []);
   const title = entry.map(({title}) => title)[number]
-  const quote = entry.map(({quote}) => quote)[number]
-  const description = entry.map(({description}) => description)[number]
+ 
  
 console.log(title)
 
@@ -94,11 +79,13 @@ console.log(title)
                 <p>
                   Your Enneatype is:
               </p>
-                
+              {entries.map((entry) =>
+        
+          <h1>{entry.Enneatype}</h1>
+          
+        )}
                   <h1>{title}</h1>
-                  <h1>{quote}</h1>
-                  <br/>
-                  <h1>{description}</h1>
+                
 
                 <p>Go home and check the update information we have for you</p>
               </div>

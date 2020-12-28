@@ -1,6 +1,5 @@
 import {
   IonAvatar,
-  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -9,20 +8,57 @@ import {
   IonContent,
   IonGrid,
   IonHeader,
-  IonIcon,
   IonItem,
   IonLabel,
   IonList,
   IonPage,
   IonRow,
   IonTitle,
-  IonToggle,
   IonToolbar,
 } from '@ionic/react';
-import React from 'react';
-import { auth } from '../firebase';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../auth';
+import { firestore } from '../firebase';
+import { Entry, toEntry } from '../models';
 
 const Home: React.FC = () => {
+
+  const { userId, email } = useAuth();
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [entry, setEntry] = useState<Entry[]>([]);
+  
+  useEffect(() => {
+    const entriesRef = firestore.collection('users').doc(userId)
+      .collection('Enneagram');
+    return entriesRef.orderBy('date', "desc").limit(1)
+      .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
+
+  }, [userId]);
+  const number = entries.map(({ Enneatype }) => Enneatype)[0]
+ 
+  // console.log(email)
+  // console.log(number)
+  // --------------------------------------->
+  // -------------------------->
+
+
+  useEffect(() => {
+    const entriesRefEnneagram = firestore.collection('EnneagramDescription')
+      entriesRefEnneagram.get()
+      .then(({ docs }) => setEntry(docs.map(toEntry)));
+  }, []);
+
+//   // ------------------------>
+
+  const title = entry.map(({title}) => title)[number]
+  const quote = entry.map(({quote}) => quote)[number]
+  const description = entry.map(({description}) => description)[number]
+  const numberType = entry.map(({numberType}) => numberType)[number]
+  const link = entry.map(({link}) => link)[number]
+
+
+
+
   return (
     <IonPage>
       <IonHeader >
@@ -41,12 +77,12 @@ const Home: React.FC = () => {
                   <IonCol size="6" >
                     <div className="home-col-title-left">
                       <IonAvatar  >
-                        <img className="home-avatar" src="../assets/animals/cat.png" alt="" />
+                        <img className="home-avatar" src={link} alt="" />
                       </IonAvatar>
                       <div>
 
                         <h5 className="home-name"> Yersin Hernandez</h5>
-                        <p className="home-email">yersineduard@gmail.com</p>
+                        <p className="home-email">{email}</p>
 
                       </div>
                     </div>
@@ -59,10 +95,10 @@ const Home: React.FC = () => {
                         <IonCardHeader className="home-card-header" >
 
                           <IonCardTitle className="home-title-card-title" color="light">
-                            <h5 className="home-title-card-title-title">The Creative</h5>
+                            <h5 className="home-title-card-title-title">{title}</h5>
                           </IonCardTitle>
                           <IonCardContent className="home-title-card-number">
-                            <h1 className="home-title-card-number-number">4</h1>
+                            <h1 className="home-title-card-number-number">{numberType}</h1>
                           </IonCardContent>
                         </IonCardHeader>
 
@@ -83,16 +119,11 @@ const Home: React.FC = () => {
                     <div className="home-card-content">
                       <IonCardHeader className="home-card-header" >
 
-                        <IonCardTitle color="light"> Enneagram 4 Description</IonCardTitle>
+                        <IonCardTitle color="light"> Enneagram {numberType} Description</IonCardTitle>
                       </IonCardHeader>
                       <IonCardContent>
-                        <p className="home-card-content-text">People with an Enneagram Type 4
-                        personality tend to be creative,
-                        sensitive, and expressive in their behavior.
-                        They like to be unique and seek to find their own
-                        identity. Though they desire relationships,
-                        they may seem distant and reserved, especially in
-                        group settings.
+                        <p className="home-card-content-text">
+                          {description}
                         </p>
                       </IonCardContent>
                     </div>
@@ -108,11 +139,11 @@ const Home: React.FC = () => {
                     <div className="home-card-content">
                       <IonCardHeader className="home-card-header" >
 
-                        <IonCardTitle color="light">Today's quote from your enneagram type</IonCardTitle>
+                        <IonCardTitle color="light">Today's quote from {numberType} Ennetype.</IonCardTitle>
                       </IonCardHeader>
                       <IonCardContent>
                       <p className="home-card-content-text">
-                      “People say that I make strange choices, but they’re not strange for me. My sickness is that I’m fascinated by human behavior, by what’s underneath the surface, by the worlds inside people.” – Johnny Depp
+                     {quote}
                         </p>
                       </IonCardContent>
                     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonSlides, IonSlide, IonContent, IonPage, IonItem, IonButton, IonToolbar, IonButtons, IonBackButton, IonTitle, IonFab, IonFabButton, IonIcon } from '@ionic/react';
+import { IonSlides, IonSlide, IonContent, IonPage, IonButton } from '@ionic/react';
 
 
 // Optional parameters to pass to the swiper instance.

@@ -5,17 +5,9 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
   IonPage,
   IonSlide,
   IonSlides,
-  IonTitle,
-  IonToggle,
-  IonToolbar,
 } from '@ionic/react';
 import React from 'react';
 

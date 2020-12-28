@@ -1,7 +1,7 @@
 import {
  IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,
 } from '@ionic/react';
-import { home as homeIcon, settings as settingsIcon, planetOutline as planetIcon, home } from 'ionicons/icons'
+import { home as homeIcon, settings as settingsIcon, planetOutline as planetIcon } from 'ionicons/icons'
 import React from 'react';
 import { Redirect, Route} from 'react-router-dom';
 
@@ -13,7 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import DescriptionEnneagram from './pages/DescriptionEnneagram';
 import Test from './pages/Test-enneagram/Test';
-import IntroTest from './pages/Test-enneagram/IntroTest';
+
 
 
 

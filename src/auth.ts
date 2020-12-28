@@ -4,6 +4,8 @@ import { auth as firebaseAuth } from './firebase';
 interface Auth {
     loggedIn:boolean;
     userId?:string;
+    email?:string;
+
 }
 
 interface AuthInit {
@@ -21,7 +23,7 @@ export function useAuthInit(): AuthInit {
     useEffect(()=>{
        return firebaseAuth.onAuthStateChanged((firebaseUser)=>{
         const auth =firebaseUser ?
-        {loggedIn: true, userId: firebaseUser.uid} :
+        {loggedIn: true, userId: firebaseUser.uid, email: firebaseUser.email} :
         {loggedIn: false};
         setAuthInit({loading: false, auth});
       });

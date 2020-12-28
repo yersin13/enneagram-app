@@ -3,18 +3,14 @@ import {
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
   IonIcon,
   IonInput,
   IonItem,
-  IonLabel,
   IonList,
   IonLoading,
   IonPage,
   IonRow,
-  IonTitle,
   IonToast,
-  IonToolbar,
 } from '@ionic/react';
 import { lockOpenOutline, person } from 'ionicons/icons'
 // import {add as lockimport} from 'ionicons/icons'

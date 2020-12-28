@@ -1,6 +1,5 @@
 import {
   IonBackButton,
-  IonButton,
   IonButtons,
   IonCard,
   IonCardContent,
@@ -8,17 +7,12 @@ import {
   IonCardTitle,
   IonContent,
   IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
   IonPage,
   IonTitle,
-  IonToggle,
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
-import {auth} from '../firebase';
+
 
 const DescriptionEnneagram: React.FC = () => {
   return (

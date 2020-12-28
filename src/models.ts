@@ -9,6 +9,8 @@ export interface Entry {
     description:string;
     quote: string;
     title:string;
+    numberType:string;
+    link:string;
  
 
 }
