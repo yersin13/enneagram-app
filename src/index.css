@@ -365,8 +365,8 @@ padding: 20px;
   color: black;
 }
 .test-selec-box{
-  background-color: white;
-  color: black;
+  background-color: white ;
+  color: rgb(255, 255, 255);
 
 }
 
@@ -380,4 +380,8 @@ padding: 20px;
   padding: 10px;
   color: rgb(219, 52, 52);
   text-align: center;
+}
+.test-selec-box-option{
+  background-color: black;
+  color: white;
 }

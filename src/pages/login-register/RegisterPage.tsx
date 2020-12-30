@@ -28,13 +28,21 @@ const RegisterPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState({ loading: false, error: false });
   const [errorType, setErrorType] = useState('Opps!');
+  const [name, setName] = useState('');
 
 
   const handleRegister = async () => {
     try {
       setStatus({ loading: true, error: false });
-      const credential = await auth.createUserWithEmailAndPassword(email, password);
-      console.log('credential:', credential);
+      const credential = await auth.createUserWithEmailAndPassword(email, password)
+      .then((user)=>{
+        if (user){
+          user.user.updateProfile({
+            displayName:name
+          })
+        }
+      })
+     
     } catch (error) {
       setStatus({ loading: false, error: true });
       setErrorType(error.message)
@@ -62,7 +70,16 @@ const RegisterPage: React.FC = () => {
                 </IonItem>
             </IonList>
             <IonList  lines="none">
-            
+            <IonItem className="login-item"  >
+                <div className="icon-container">
+                <IonIcon className="user-icon" icon={person}></IonIcon>
+                </div>
+                <div className="input-container">
+                  <IonInput placeholder="Name" className="login-input" type="text" value={name}
+                    onIonChange={(event) => setName(event.detail.value)}>
+                    </IonInput>
+                    </div>
+                </IonItem>
             <IonItem className="login-item"  >
                 <div className="icon-container">
                 <IonIcon className="user-icon" icon={person}></IonIcon>

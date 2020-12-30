@@ -45,7 +45,7 @@ const TestResult: React.FC = () => {
 
 
 // look in the array for a match and return the index then use the index to extrac elements
-const index = entry.findIndex(x => x.title === "The Peacemaker");
+const index = entry.findIndex(x => x.id === number);
  
 console.log(index)
 const title = entry.map(({title}) => title)[index]

@@ -12,6 +12,7 @@ export interface Entry {
     numberType:string;
     link:string;
  
+ 
 
 }
 

@@ -15,6 +15,7 @@ import RegisterPage from './pages/login-register/RegisterPage';
 import { SlidesIntro } from './pages/SlidesIntro';
 import IntroTest from './pages/Test-enneagram/IntroTest';
 import TestResult from './pages/Test-enneagram/TestResult';
+import TestRegister from './pages/components/TestRegister';
 
 
 
@@ -45,7 +46,7 @@ const App: React.FC = () => {
       </Route>
   
       <Route exact path="/register">
-          <RegisterPage />
+          <TestRegister />
       </Route>
       <Route path="/my">
         <AppTabs />

@@ -50,13 +50,13 @@ const Test: React.FC = () => {
 const dateNow= formatDate(Date.now());
 
 
-  const FormSchema = yup.object().shape({
+  const validationSchema = yup.object().shape({
     PrimeraRespuesta: yup.string().required(),
     SegundaRespuesta: yup.string().required(),
   });
 
   const { register, handleSubmit, errors } = useForm<Entry>({
-    resolver: yupResolver(FormSchema)
+    validationSchema,
   });
 
 
@@ -157,6 +157,10 @@ const dateNow= formatDate(Date.now());
                     }
   };
 
+  const options = {
+    cssClass: 'my-custom-interface'
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -228,10 +232,10 @@ const dateNow= formatDate(Date.now());
                       <IonItem className="test-select">
                         <IonLabel>
                           selected letter</IonLabel>
-                        <IonSelect className="test-selec-box" value={PrimeraRespuesta} name="PrimeraRespuesta" ref={register} placeholder="Select One" onIonChange={e => setPrimeraRespuesta(e.detail.value)}>
-                          <IonSelectOption value="A"  >A</IonSelectOption>
-                          <IonSelectOption value="B"  >B </IonSelectOption>
-                          <IonSelectOption value="C"  >C</IonSelectOption>
+                        <IonSelect interface="popover" interfaceOptions={options} value={PrimeraRespuesta} name="PrimeraRespuesta" ref={register} placeholder="Select One" onIonChange={e => setPrimeraRespuesta(e.detail.value)}>
+                          <IonSelectOption className="test-selec-box-option" value="A"  >A</IonSelectOption>
+                          <IonSelectOption  className="test-selec-box-option" value="B"  >B </IonSelectOption>
+                          <IonSelectOption  className="test-selec-box-option" value="C"  >C</IonSelectOption>
                         </IonSelect>
 
                       </IonItem>
@@ -291,10 +295,10 @@ const dateNow= formatDate(Date.now());
 
                         <IonLabel>
                           selected letter</IonLabel>
-                        <IonSelect className="test-selec-box" ref={register} name="SegundaRespuesta" value={SegundaRespuesta} placeholder="Select One" onIonChange={e => setSegundaRespuesta(e.detail.value)}>
-                          <IonSelectOption value="X"  >X</IonSelectOption>
-                          <IonSelectOption value="Y"  >Y</IonSelectOption>
-                          <IonSelectOption value="Z"  >Z</IonSelectOption>
+                        <IonSelect interface="popover" interfaceOptions={options}  className="test-selec-box" ref={register} name="SegundaRespuesta" value={SegundaRespuesta} placeholder="Select One" onIonChange={e => setSegundaRespuesta(e.detail.value)}>
+                          <IonSelectOption className="test-selec-box-option" value="X"  >X</IonSelectOption>
+                          <IonSelectOption className="test-selec-box-option" value="Y"  >Y</IonSelectOption>
+                          <IonSelectOption  className="test-selec-box-option" value="Z"  >Z</IonSelectOption>
                         </IonSelect>
 
 
