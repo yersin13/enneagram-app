@@ -14,11 +14,60 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import { chevronForward } from 'ionicons/icons'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../auth';
+import { firestore } from '../firebase';
+import { Entry, toEntry  } from '../models';
 
 const Dashboard: React.FC = () => {
 
+  const { userId, email , name } = useAuth();
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [entry, setEntry] = useState<Entry[]>([]);
+  const [refresh, setRefresh] = useState<Entry[]>();
+  useEffect(() => {
+  
+    const entriesRef = firestore.collection('users').doc(userId)
+      .collection('Enneagram');
+    return entriesRef.orderBy('date', "desc").limit(1)
+      .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
 
+  }, [userId]);
+  const number = entries.map(({ Enneatype }) => Enneatype)[0]
+if(number == null){
+  return<IonPage>
+    <IonHeader >
+        <IonToolbar className="header">
+          <IonTitle>Your Dashboard
+          </IonTitle>
+        </IonToolbar>
+      </IonHeader>
+    <IonContent>
+    
+        <div className="dashboard-grid-container  ">
+          
+          <IonGrid className="dashboard-grid">
+            <IonRow className="dashboard-row-top" >
+              <IonCol className="ion-padding" >
+              <div className="ion-padding">
+          <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test</IonButton>
+        </div>
+                <div className="dashboard-card-container">
+                  <IonCard routerLink="/my/DescriptionEnneagram" className="dashboard-card">
+                    <div className="dashboard-card-content">
+                      <IonCardHeader className="dashboard-card-header" >
+                        <IonCardTitle color="light">Enneagram Description  <IonIcon icon={chevronForward}></IonIcon></IonCardTitle>
+                      </IonCardHeader>
+                    </div>
+                  </IonCard>
+                </div>
+              </IonCol>
+            </IonRow>
+            </IonGrid>
+            </div>
+    </IonContent>
+  </IonPage>
+}
   return (
     <IonPage >
 

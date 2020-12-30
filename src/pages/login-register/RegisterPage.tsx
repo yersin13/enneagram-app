@@ -1,126 +1,149 @@
 import {
-  IonButton,
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonList,
-  IonLoading,
-  IonPage,
-  IonRow,
-  IonToast,
-} from '@ionic/react';
-import { lockOpenOutline, person } from 'ionicons/icons';
-import React, { useState } from 'react';
-import { Redirect } from 'react-router';
-import { useAuth } from '../../auth';
-import { auth } from '../../firebase';
+    IonContent,
+    IonPage,
+    IonText,
+    IonInput,
+    IonButton,
+    IonCheckbox,
+    IonItem,
+    IonLabel,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonList,
+    IonToast,
+    IonLoading,
+    IonIcon,
+  } from "@ionic/react";
+  import React, { useState } from "react";
 
+  import { useForm } from "react-hook-form";
+  import Input, { InputProps } from "../components/Input";
+  import { object, string } from "yup";
+import { useAuth } from "../../auth";
+import { Redirect } from "react-router";
+import { auth } from "../../firebase";
+import { eye, eyeOff } from 'ionicons/icons'
+  
+  const RegisterPage: React.FC = () => {
+    const { loggedIn } = useAuth();
+    const [status, setStatus] = useState({ loading: false, error: false });
+    const [errorType, setErrorType] = useState('Opps!');
+    const [passwordShown, setPasswordShown] = useState(false);
+    const [iconEye, setIconEye] = useState(eye);
 
-
-
-const RegisterPage: React.FC = () => {
-  const { loggedIn } = useAuth();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [status, setStatus] = useState({ loading: false, error: false });
-  const [errorType, setErrorType] = useState('Opps!');
-  const [name, setName] = useState('');
-
-
-  const handleRegister = async () => {
-    try {
-      setStatus({ loading: true, error: false });
-      const credential = await auth.createUserWithEmailAndPassword(email, password)
-      .then((user)=>{
-        if (user){
-          user.user.updateProfile({
-            displayName:name
-          })
+    const validationSchema = object().shape({
+      email: string().required().email(),
+      name: string().required().min(5).max(32),
+      password: string().required().min(6),
+    });
+    const { control, handleSubmit, errors } = useForm({
+      validationSchema,
+    });
+    
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+        if(passwordShown == true){
+            setIconEye(eye)
+        }else{
+            setIconEye(eyeOff)
         }
-      })
-     
-    } catch (error) {
-      setStatus({ loading: false, error: true });
-      setErrorType(error.message)
-      console.log('error', error.message);
-    }
-  };
+      };
+
+
+    const formFields: InputProps[] = [
+      {
+       
+        name: "name",
+        label: "Name",
+      },
+      {
+        name: "email",
+        component: <IonInput className="login-input"  type="email" />,
+        label: "Email",
+      },
+      {
+        name: "password",
+        component: <IonInput  className="login-input" type={passwordShown ? "text" : "password"} clearOnEdit={false} />,
+        label: "Password",
+      },
+    ];
+  
+
+    const registerUser = async (data: any) => {
+        try {
+          setStatus({ loading: true, error: false });
+          const credential = await auth.createUserWithEmailAndPassword(data.email, data.password)
+          .then((user)=>{
+            if (user){
+              user.user.updateProfile({
+                displayName:data.name
+              })
+            }
+          })
+         console.log(credential)
+        } catch (error) {
+          setStatus({ loading: false, error: true });
+    setErrorType(error.message)
+          console.log('error', error.message);
+        }
+      };
+    
+  
 
   if (loggedIn) {
     return <Redirect to="intro" />
   }
-  return (
-    <IonPage>
-      <div className="login">
-
-      </div>
-
-      <IonContent className="ion-padding login-content" >
-        <IonGrid >
-          <IonRow className="login-row">
-          <IonCol className="ion-align-self-center">
-            <IonList className="login-container"  lines="none">
-            <IonItem className="login-item"><div className="login-header"><h1>Sign Up</h1></div></IonItem>
-            <IonItem className="login-item" >
-                  <img className="logo" src="/assets/icon/logo.png" alt="" />
-                </IonItem>
-            </IonList>
-            <IonList  lines="none">
-            <IonItem className="login-item"  >
-                <div className="icon-container">
-                <IonIcon className="user-icon" icon={person}></IonIcon>
+    return (
+        <IonPage>
+        <div className="login">
+  
+        </div>
+  
+        <IonContent className="ion-padding login-content" >
+          <IonGrid >
+            <IonRow className="login-row">
+            <IonCol className="ion-align-self-center">
+              <IonList className="login-container"  lines="none">
+              <IonItem className="login-item"><div className="login-header"><h1>Sign Up</h1></div></IonItem>
+              <IonItem className="login-item" >
+                    <img className="logo" src="/assets/icon/logo.png" alt="" />
+                  </IonItem>
+              </IonList>
+             
+              <form onSubmit={handleSubmit(registerUser)}>
+              <IonList  lines="none">
+                {formFields.map((field, index) => (
+                  <Input {...field} control={control} key={index} errors={errors} />
+                ))}
+                <div>
+                <IonButton  onClick={togglePasswordVisiblity}>Show password
+                    <IonIcon  className="user-icon" icon={iconEye}>
+                    </IonIcon>
+                    </IonButton>
                 </div>
-                <div className="input-container">
-                  <IonInput placeholder="Name" className="login-input" type="text" value={name}
-                    onIonChange={(event) => setName(event.detail.value)}>
-                    </IonInput>
-                    </div>
-                </IonItem>
-            <IonItem className="login-item"  >
-                <div className="icon-container">
-                <IonIcon className="user-icon" icon={person}></IonIcon>
-                </div>
-                <div className="input-container">
-                  <IonInput placeholder="Email" className="login-input" type="email" value={email}
-                    onIonChange={(event) => setEmail(event.detail.value)}>
-                    </IonInput>
-                    </div>
-                </IonItem>
-                <IonItem className="login-item"  >
-                  <div className="icon-container">
-                    <IonIcon className="user-icon" icon={lockOpenOutline}></IonIcon>
-                  </div>
-              
-              
-                  <div className="input-container">
-                    <IonInput placeholder="Password" className="login-input" type="password" value={password}
-                      onIonChange={(event) => setPassword(event.detail.value)}>
-                    </IonInput>
-                  </div>
-
-
-                </IonItem>
-            </IonList>
-            {status.error &&
-              <IonToast color="danger" duration={2000} isOpen={true} message={errorType} />
-            }
-            <IonButton expand='block' onClick={handleRegister}>
-              Create Account
-      </IonButton>
-            <IonButton expand='block' fill="clear" routerLink="/login">
-              Already have an account?
-      </IonButton>
-            <IonLoading isOpen={status.loading} />
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      </IonContent>
-    </IonPage>
-  );
-};
-
-export default RegisterPage;
+                   
+                    
+              </IonList>
+          
+            <IonButton expand="block" type="submit" className="ion-margin-top">
+                  Register
+                </IonButton>
+              </form>
+           
+              <IonButton expand='block' fill="clear" routerLink="/login">
+                Already have an account?
+        </IonButton>
+              <IonLoading isOpen={status.loading} />
+              </IonCol>
+              {status.error &&
+                <IonToast color="danger" duration={2000} isOpen={true} message={errorType} />
+              }
+            </IonRow>
+          </IonGrid>
+        </IonContent>
+      </IonPage>
+    );
+  };
+  
+  export default RegisterPage;

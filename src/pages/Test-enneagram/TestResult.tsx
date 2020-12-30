@@ -16,15 +16,20 @@ const slideOpts = {
 
 
 const TestResult: React.FC = () => {
-  const { userId } = useAuth();
+  const { userId, name } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
 
+
   useEffect(() => {
+    if(name == null){
+      window.location.reload()
+    }
     const entriesRef = firestore.collection('users').doc(userId)
       .collection('Enneagram');
     return entriesRef.orderBy('date', "desc").limit(1)
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
+      
 
   }, [userId]);
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
@@ -34,11 +39,16 @@ const TestResult: React.FC = () => {
   // -------------------------->
 
 
+
+
+
+
   useEffect(() => {
     const entriesRefEnneagram = firestore.collection('EnneagramDescription')
   
       entriesRefEnneagram.get()
       .then(({ docs }) => setEntry(docs.map(toEntry)));
+      
   }, []);
   console.log(entry);
 //   // ------------------------>

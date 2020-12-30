@@ -11,6 +11,8 @@ export interface Entry {
     title:string;
     numberType:string;
     link:string;
+    testTaken:boolean;
+    name:string;
  
  
 

@@ -9,13 +9,10 @@ import AppTabs from './AppTabs';
 import LoginPage from './pages/login-register/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/login-register/RegisterPage';
-
-
-
 import { SlidesIntro } from './pages/SlidesIntro';
 import IntroTest from './pages/Test-enneagram/IntroTest';
 import TestResult from './pages/Test-enneagram/TestResult';
-import TestRegister from './pages/components/TestRegister';
+
 
 
 
@@ -46,7 +43,7 @@ const App: React.FC = () => {
       </Route>
   
       <Route exact path="/register">
-          <TestRegister />
+          <RegisterPage />
       </Route>
       <Route path="/my">
         <AppTabs />

@@ -41,7 +41,7 @@ function formatDate(isoString){
 
 
 const Test: React.FC = () => {
-  const { userId } = useAuth();
+  const { userId, name } = useAuth();
   const history = useHistory();
   const [status, setStatus] = useState({ loading: false, error: false });
   const [PrimeraRespuesta, setPrimeraRespuesta] = useState<string>();
@@ -68,7 +68,7 @@ const dateNow= formatDate(Date.now());
       console.log('Eneatype 7')
       const entriesRef = firestore.collection('users').doc(userId)
         .collection('Enneagram');
-      const entryData = { Enneatype: "7",date: dateNow };
+      const entryData = { Enneatype: "7",date: dateNow  };
       const entryRef = await entriesRef.add(entryData);
       console.log('saved', entryRef.id);
       history.push("/my/test-result");
@@ -79,7 +79,7 @@ const dateNow= formatDate(Date.now());
         console.log('Eneatype 8');
         const entriesRef = firestore.collection('users').doc(userId)
           .collection('Enneagram');
-        const entryData = { Enneatype: "8" ,date: dateNow };
+        const entryData = { Enneatype: "8" ,date: dateNow  };
         const entryRef = await entriesRef.add(entryData);
         history.push("/my/test-result");
         setStatus({ loading: false, error: false });
@@ -256,7 +256,7 @@ const dateNow= formatDate(Date.now());
                             </IonCardHeader>
                             <IonCardContent>
                               <p className="home-card-content-text">
-                                I have tended to be fairly independent and assertive: I've felt that life works best when you meet it head-on. I set my own goals, get involved, and want to make things happen. I don't like sitting around - I want to achieve something big and have an impact. I don't necessarily seek confrontations, but I don't let people push me around, either. Most of the time, I know what I want, and I go for it. I tend to work hard and to play hard.
+                              I am a person who usually maintains a positive outlook and feels that things will work out for the best. I can usually find something to be enthusiastic about and different ways to occupy myself. I like being around people and helping others be happy—I enjoy sharing my own well-being wi them. (I don’t always feel great, but I generally try not to show it!) However, keeping a positive frame of mind has sometimes meant that I’ve put off dealing with my own problems for too long. 
 </p>
                             </IonCardContent>
                           </div>
@@ -270,7 +270,7 @@ const dateNow= formatDate(Date.now());
                             </IonCardHeader>
                             <IonCardContent>
                               <p className="test-card-content-text">
-                                I have tended to be quiet and am used to being on my own. I usually don't draw much attention to myself socially, and it's generally unusual for me to assert myself all that forcefully. I don't feel comfortable taking the lead or being as competitive as others. Many would probably say that I'm something of a dreamer - a lot of my excitement goes on in my imagination. I can be quite content without feeling I have to be active all the time.
+                              I am a person who has strong feelings about things—most people can tell when I’m upset about something. I can be guarded with people, but I’m more sensitive than I let on. I want to know where I stand with others and who and what I can count on—it’s pretty clear to most people where they stand with me. When I’m upset about something, I want others to respond and to get as worked up as I am. I know the rules, but I don’t want people telling me what to do. I want to decide for myself. 
 </p>
                             </IonCardContent>
                           </div>
@@ -284,7 +284,7 @@ const dateNow= formatDate(Date.now());
                             </IonCardHeader>
                             <IonCardContent>
                               <p className="test-card-content-text">
-                                I have tended to be extremely responsible and dedicated. I feel terrible if I don't keep my commitments and do what's expected of me. I want people to know that I'm there for them and that I will do what I believe is best for them. I've often made great personal sacrifices for the sake of others, whether they know it or not. I often don't take adequate care of myself - I do the work that needs to be done and relax(and do what I want) if there's time left.
+                              I am a person who is self-controlled and logical—I don’t like revealing my feelings or getting bogged down in them. I am efficient—even perfectionist—about my work, and prefer working on my own. If there are problems or personal conflicts, I try not to let my feelings influence my actions. Some say I’m too cool and detached, but I don’t want my private reactions to distract me from what’s really important. I’m glad that I usually don’t show my reactions when others “get to me”.
 </p>
                             </IonCardContent>
                           </div>

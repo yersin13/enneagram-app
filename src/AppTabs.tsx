@@ -20,16 +20,14 @@ import Test from './pages/Test-enneagram/Test';
 
 
 const AppTabs: React.FC = () => {
-  const {loggedIn} = useAuth();
+  const {loggedIn } = useAuth();
   if(!loggedIn){
     return <Redirect to="/login" />
   }
   return (
         <IonTabs>
         <IonRouterOutlet>
-      {/* <Route exact path="/my/entries">
-        <HomePage/>
-      </Route> */}
+
       <Route exact path="/my/dashboard">
         <Dashboard/>
       </Route>
@@ -52,7 +50,7 @@ const AppTabs: React.FC = () => {
       </Route>
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-      <IonTabButton tab="profile" href="/my/home" >
+      <IonTabButton tab="profile"  href="/my/home" >
           <IonIcon icon={homeIcon} />
           <IonLabel>Home</IonLabel>
         </IonTabButton>

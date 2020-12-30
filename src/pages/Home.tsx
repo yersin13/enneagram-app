@@ -1,5 +1,6 @@
 import {
   IonAvatar,
+  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -23,11 +24,13 @@ import { Entry, toEntry } from '../models';
 
 const Home: React.FC = () => {
 
-  const { userId, email } = useAuth();
+ 
+  const { userId, email , name } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
-  
+  const [refresh, setRefresh] = useState<Entry[]>();
   useEffect(() => {
+  
     const entriesRef = firestore.collection('users').doc(userId)
       .collection('Enneagram');
     return entriesRef.orderBy('date', "desc").limit(1)
@@ -43,6 +46,7 @@ const Home: React.FC = () => {
 
 
   useEffect(() => {
+    
     const entriesRefEnneagram = firestore.collection('EnneagramDescription')
       entriesRefEnneagram.get()
       .then(({ docs }) => setEntry(docs.map(toEntry)));
@@ -59,10 +63,48 @@ console.log(index)
   const description = entry.map(({description}) => description)[index]
   const numberType = entry.map(({numberType}) => numberType)[index]
   const link = entry.map(({link}) => link)[index]
+  
 
+  
+  console.log(title);
+  if(title == null){
+    return  <IonPage>
+      <IonHeader >
+        <IonToolbar className="header">
+          <IonTitle>
+          Welcome {name}
+          </IonTitle>
+          </IonToolbar>
+          </IonHeader>
+<IonContent>
+  <IonList>
+    <IonItem>
+    <IonCard className="home-title-card">
 
+<div className="home-title-content">
+  <IonCardHeader className="home-card-header" >
 
+    <IonCardTitle className="home-title-card-title" color="light">
+    <h3>Please Take the Test so we can display your personalised information.</h3>
+    </IonCardTitle>
+   
+  </IonCardHeader>
 
+</div>
+</IonCard>
+   
+    </IonItem>
+    <div className="ion-padding">
+          <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test</IonButton>
+        </div>
+  </IonList>
+
+</IonContent>
+      
+      
+    </IonPage>
+  }
+  
   return (
     <IonPage>
       <IonHeader >
@@ -85,7 +127,7 @@ console.log(index)
                       </IonAvatar>
                       <div>
 
-                        <h5 className="home-name"> Yersin Hernandez</h5>
+                        <h5 className="home-name">{name}</h5>
                         <p className="home-email">{email}</p>
 
                       </div>

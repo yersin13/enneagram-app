@@ -20,9 +20,11 @@ const Input: FC<InputProps> = ({ name, control, component, label, errors }) => {
     <>
       <IonItem className="login-item" >
         {label && <IonLabel >{label}</IonLabel>}
+        <div className="input-container">
         <Controller
           as={
             component ?? (
+                
               <IonInput
               className="login-input" 
                 aria-invalid={errors && errors[name] ? "true" : "false"}
@@ -34,6 +36,8 @@ const Input: FC<InputProps> = ({ name, control, component, label, errors }) => {
           control={control}
           onChangeName="onIonChange"
         />
+        </div>
+      
       </IonItem>
       {errors && errors[name] && (
         <IonText color="danger" className="ion-padding-start">

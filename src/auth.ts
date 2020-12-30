@@ -5,7 +5,7 @@ interface Auth {
     loggedIn:boolean;
     userId?:string;
     email?:string;
-    displayName?:string;
+    name?:string;
 
 }
 
@@ -24,7 +24,7 @@ export function useAuthInit(): AuthInit {
     useEffect(()=>{
        return firebaseAuth.onAuthStateChanged((firebaseUser)=>{
         const auth =firebaseUser ?
-        {loggedIn: true, userId: firebaseUser.uid, email: firebaseUser.email, displayName:firebaseUser.displayName} :
+        {loggedIn: true, userId: firebaseUser.uid, email: firebaseUser.email, name:firebaseUser.displayName} :
         {loggedIn: false};
         setAuthInit({loading: false, auth});
       });
