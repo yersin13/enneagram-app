@@ -109,7 +109,7 @@ if(number == null){
                   </IonCard>
                 </div>
                 <div className="dashboard-card-left2">
-                  <IonCard className="dashboard-card">
+                  <IonCard  routerLink="/my/questions" className="dashboard-card">
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header" >
                         <IonCardTitle color="light">Questions and Answers</IonCardTitle>

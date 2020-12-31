@@ -22,9 +22,9 @@ const TestResult: React.FC = () => {
 
 
   useEffect(() => {
-    if(name == null){
-      window.location.reload()
-    }
+    // if(name == null){
+    //   window.location.reload()
+    // }
     const entriesRef = firestore.collection('users').doc(userId)
       .collection('Enneagram');
     return entriesRef.orderBy('date', "desc").limit(1)

@@ -13,6 +13,8 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import DescriptionEnneagram from './pages/DescriptionEnneagram';
 import Test from './pages/Test-enneagram/Test';
+import Profile from './pages/Profile';
+import Questions from './pages/Questions';
 
 
 
@@ -30,6 +32,9 @@ const AppTabs: React.FC = () => {
 
       <Route exact path="/my/dashboard">
         <Dashboard/>
+      </Route>
+      <Route exact path="/my/questions">
+        <Questions/>
       </Route>
       <Route exact path="/my/DescriptionEnneagram">
         <DescriptionEnneagram/>
