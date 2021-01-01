@@ -16,6 +16,8 @@ import Test from './pages/Test-enneagram/Test';
 import Profile from './pages/Profile';
 import Questions from './pages/Questions';
 
+import NameChange from './pages/NameChange';
+
 
 
 
@@ -52,6 +54,9 @@ const AppTabs: React.FC = () => {
       </Route>
       <Route exact path="/my/settings">
         <SettingsPage/>
+      </Route>
+      <Route exact path="/my/name-change">
+        <NameChange/>
       </Route>
       </IonRouterOutlet>
       <IonTabBar slot="bottom">

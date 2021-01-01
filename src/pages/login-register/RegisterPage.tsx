@@ -18,12 +18,13 @@ import {
   import React, { useState } from "react";
 
   import { useForm } from "react-hook-form";
-  import Input, { InputProps } from "../components/Input";
+
   import { object, string } from "yup";
 import { useAuth } from "../../auth";
 import { Redirect } from "react-router";
 import { auth } from "../../firebase";
 import { eye, eyeOff } from 'ionicons/icons'
+import Input, { InputProps } from "../components/Input";
   
   const RegisterPage: React.FC = () => {
     const { loggedIn } = useAuth();

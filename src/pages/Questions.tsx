@@ -8,7 +8,7 @@ import TechDetail from './components/TechDetails';
 import { useAuth } from '../auth';
 import { Entry, toEntry } from '../models';
 import { firestore } from '../firebase';
-import techs from '../techs';
+import QA from '../QA';
 
 const Home: React.FC = () => {
 
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
 //   }, []);
 
  
-  const [tech, setTech] = useState(techs[0])
+  const [tech, setTech] = useState(QA[0])
   console.log(tech)
 
   return (
@@ -76,9 +76,9 @@ const Home: React.FC = () => {
               <h1>Q/A</h1>
               </div>
               
-              {techs.map((tech, i) => {
+              {QA.map((tech, i) => {
                 return (
-                  <IonItem button className="ion-react-nav-detail-btn" key={i} onClick={() => setTech(techs[i])}>
+                  <IonItem button className="ion-react-nav-detail-btn" key={i} onClick={() => setTech(QA[i])}>
                     <IonIcon slot="start" icon={tech.icon} color="primary"/>
                     <IonLabel>
                       <h3>{tech.question}</h3>
