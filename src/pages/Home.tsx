@@ -183,6 +183,7 @@ const Home: React.FC = () => {
 
                         {/* </IonHeader> */}
                         {/* <IonCardTitle color="light"><h4>Millionaires with your same enneagram type</h4></IonCardTitle> */}
+                        <IonCardTitle color="light"  className="personalities-subtitle">Millionaires with your same enneagram type</IonCardTitle>
                   <div className="personalities-container">
 
                  
@@ -193,12 +194,13 @@ const Home: React.FC = () => {
                               <img src={prof.link} alt="" />
                             </IonAvatar>
 
-                            <IonLabel ><h3 className="name-personalities" >{prof.name}</h3></IonLabel>
+                            <IonLabel className="name-personalities" >{prof.name}</IonLabel>
                             {/* <h6>{prof.net}</h6> */}
                           </div>
                         )}
+                        
                          </div>
-                            <IonCardTitle color="light"><h5>Millionaires with your same enneagram type</h5></IonCardTitle>
+                            
                       </div>
                      
                     </IonCardHeader>
