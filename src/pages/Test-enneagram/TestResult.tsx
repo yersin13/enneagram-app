@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { IonSlides, IonSlide, IonContent, IonPage, IonButton,   } from '@ionic/react';
+import { IonSlides, IonSlide, IonContent, IonPage, IonButton, IonAvatar, IonLabel, IonChip, IonItem, } from '@ionic/react';
 import { useAuth } from '../../auth';
 import { firestore } from '../../firebase';
-import { Entry,  toEntry } from '../../models';
+import { Entry, toEntry } from '../../models';
 
 
 
@@ -29,7 +29,7 @@ const TestResult: React.FC = () => {
       .collection('Enneagram');
     return entriesRef.orderBy('date', "desc").limit(1)
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
-      
+
 
   }, [userId]);
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
@@ -45,20 +45,21 @@ const TestResult: React.FC = () => {
 
   useEffect(() => {
     const entriesRefEnneagram = firestore.collection('EnneagramDescription')
-  
-      entriesRefEnneagram.get()
+
+    entriesRefEnneagram.get()
       .then(({ docs }) => setEntry(docs.map(toEntry)));
-      
+
   }, []);
   console.log(entry);
-//   // ------------------------>
+  //   // ------------------------>
 
 
-// look in the array for a match and return the index then use the index to extrac elements
-const index = entry.findIndex(x => x.id === number);
- 
-console.log(index)
-const title = entry.map(({title}) => title)[index]
+  // look in the array for a match and return the index then use the index to extrac elements
+  const index = entry.findIndex(x => x.id === number);
+
+  console.log(index)
+  const title = entry.map(({ title }) => title)[index]
+  const link = entry.map(({ link }) => link)[index]
 
 
   return (
@@ -69,21 +70,26 @@ const title = entry.map(({title}) => title)[index]
 
             <div>
 
-              <div className="ion-padding">
-                <h1>Thank you for taking the test</h1>
-
-              </div>
+             
               <div className="ion-padding">
                 <p>
                   Your Enneatype is:
               </p>
-              {entries.map((entry) =>
-        
-          <h1>{entry.Enneatype}</h1>
-          
-        )}
-                  <h1>{title}</h1>
+           
+                <h1>"{title}"</h1>
+                {entries.map((entry) =>
+                  <h1>{entry.Enneatype}</h1>
+                )}
                 
+                <div className="perfil-container-top">
+                  <IonLabel>This avatar animal  
+                    represent the most the Qualities of your enneagram type</IonLabel>
+                    <br/>
+                  <IonAvatar className="perfil-avatar" >
+                    <img className="home-avatar" src={link} alt="" />
+                    {/* <p>{name}</p> */}
+                  </IonAvatar>    
+                </div>
 
                 <p>Go home and check the update information we have for you</p>
               </div>

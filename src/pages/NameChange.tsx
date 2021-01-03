@@ -66,8 +66,9 @@ const EmailChange: React.FC = () => {
          
         }).then(function() {
           console.log('name changed')
-       
-          window.location.reload()
+    // remember to set this reload in real app
+          // window.location.reload()
+          history.goBack()
         }).catch(function(error) {
           console.log('something goes wrong')
         });

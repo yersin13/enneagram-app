@@ -90,7 +90,7 @@ const SettingsPage: React.FC = () => {
           <IonLabel className="settings-text">
         {name}
           </IonLabel>
-          <IonButton routerLink="/my/name-change">
+          <IonButton  routerLink="/my/name-change">
             Change
           </IonButton>
         </IonItem>
@@ -101,7 +101,8 @@ const SettingsPage: React.FC = () => {
           <IonLabel className="settings-text">
             Password
           </IonLabel>
-          <IonButton onClick={handleChangePassword} disabled={buttomStatus} >
+          {/* remember to set disable={buttomStatus} */}
+          <IonButton onClick={handleChangePassword} disabled={true} >
             Change
           </IonButton>
           <IonAlert

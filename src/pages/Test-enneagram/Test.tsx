@@ -62,23 +62,20 @@ const dateNow= formatDate(Date.now());
 
 
   const onSubmit = async (data: Entry) => {
-    console.log(data);
+    const entriesRef = firestore.collection('users').doc(userId)
+    .collection('Enneagram');
+
     if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta === "X") {
       setStatus({ loading: true, error: false });
       console.log('Eneatype 7')
-      const entriesRef = firestore.collection('users').doc(userId)
-        .collection('Enneagram');
       const entryData = { Enneatype: "7",date: dateNow  };
       const entryRef = await entriesRef.add(entryData);
-      console.log('saved', entryRef.id);
       history.push("/my/test-result");
       setStatus({ loading: false, error: false });
     } else
       if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta === "Y") {
         setStatus({ loading: true, error: false });
-        console.log('Eneatype 8');
-        const entriesRef = firestore.collection('users').doc(userId)
-          .collection('Enneagram');
+        console.log('Eneatype 8');     
         const entryData = { Enneatype: "8" ,date: dateNow  };
         const entryRef = await entriesRef.add(entryData);
         history.push("/my/test-result");
@@ -86,9 +83,7 @@ const dateNow= formatDate(Date.now());
       } else
         if (data.PrimeraRespuesta === "A" && data.SegundaRespuesta === "Z") {
           setStatus({ loading: true, error: false });
-          console.log('Eneatype 3')
-          const entriesRef = firestore.collection('users').doc(userId)
-            .collection('Enneagram');
+          console.log('Eneatype 3')     
           const entryData = { Enneatype: "3" ,date: dateNow };
           const entryRef = await entriesRef.add(entryData);
           history.push("/my/test-result");
@@ -96,9 +91,7 @@ const dateNow= formatDate(Date.now());
         } else
           if (data.PrimeraRespuesta === "B" && data.SegundaRespuesta === "X") {
             setStatus({ loading: true, error: false });
-            console.log('Eneatype 9')
-            const entriesRef = firestore.collection('users').doc(userId)
-              .collection('Enneagram');
+            console.log('Eneatype 9')     
             const entryData = { Enneatype: "9" ,date: dateNow };
             const entryRef = await entriesRef.add(entryData);
             history.push("/my/test-result");
@@ -108,8 +101,6 @@ const dateNow= formatDate(Date.now());
             if (data.PrimeraRespuesta === "B" && data.SegundaRespuesta === "Y") {
               setStatus({ loading: true, error: false });
               console.log('Eneatype 4')
-              const entriesRef = firestore.collection('users').doc(userId)
-                .collection('Enneagram');
               const entryData = { Enneatype: "4" ,date: dateNow };
               const entryRef = await entriesRef.add(entryData);
               history.push("/my/test-result");
@@ -118,8 +109,6 @@ const dateNow= formatDate(Date.now());
               if (data.PrimeraRespuesta === "B" && data.SegundaRespuesta === "Z") {
                 setStatus({ loading: true, error: false });
                 console.log('Eneatype 5')
-                const entriesRef = firestore.collection('users').doc(userId)
-                  .collection('Enneagram');
                 const entryData = { Enneatype: "5" ,date: dateNow };
                 const entryRef = await entriesRef.add(entryData);
                 history.push("/my/test-result");
@@ -128,8 +117,6 @@ const dateNow= formatDate(Date.now());
                 if (data.PrimeraRespuesta === "C" && data.SegundaRespuesta === "X") {
                   setStatus({ loading: true, error: false });
                   console.log('Eneatype 2')
-                  const entriesRef = firestore.collection('users').doc(userId)
-                    .collection('Enneagram');
                   const entryData = { Enneatype: "2" ,date: dateNow };
                   const entryRef = await entriesRef.add(entryData);
                   history.push("/my/test-result");
@@ -138,8 +125,6 @@ const dateNow= formatDate(Date.now());
                   if (data.PrimeraRespuesta === "C" && data.SegundaRespuesta === "Y") {
                     setStatus({ loading: true, error: false });
                     console.log('Eneatype 6')
-                    const entriesRef = firestore.collection('users').doc(userId)
-                      .collection('Enneagram');
                     const entryData = { Enneatype: "6" ,date: dateNow };
                     const entryRef = await entriesRef.add(entryData);
                     history.push("/my/test-result");
@@ -148,8 +133,6 @@ const dateNow= formatDate(Date.now());
                     if (data.PrimeraRespuesta === "C" && data.SegundaRespuesta === "Z") {
                       setStatus({ loading: true, error: false });
                       console.log('Eneatype 1')
-                      const entriesRef = firestore.collection('users').doc(userId)
-                        .collection('Enneagram');
                       const entryData = { Enneatype: "1" ,date: dateNow };
                       const entryRef = await entriesRef.add(entryData);
                       history.push("/my/test-result");
@@ -178,7 +161,7 @@ const dateNow= formatDate(Date.now());
               <div className="test-card-content">
                 <IonCardHeader className="test-card-header" >
 
-                  <IonCardTitle color="light"> Enneagram Test (Riso-Hudson)</IonCardTitle>
+                  <IonCardTitle color="light"><h4>Enneagram Test (Riso-Hudson)</h4> </IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent className="test-card-content">
                   <div className="test-instructions">
@@ -313,9 +296,7 @@ const dateNow= formatDate(Date.now());
             </IonCard>
             {/* --------------------------------------------------- */}
 
-            <IonItemDivider>
-
-            </IonItemDivider>
+         <br/>
 
             <IonButton expand="block" type="submit">Save</IonButton>
           </div>

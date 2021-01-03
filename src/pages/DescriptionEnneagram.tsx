@@ -23,7 +23,10 @@ const DescriptionEnneagram: React.FC = () => {
             <IonBackButton />
           </IonButtons>
         <IonTitle>
+
           Description Enneagram
+         
+      
           </IonTitle>
 
         </IonToolbar>
@@ -34,7 +37,7 @@ const DescriptionEnneagram: React.FC = () => {
 <div className="home-card-content">
   <IonCardHeader className="home-card-header" >
 
-    <IonCardTitle color="light"> Enneagram 4 Description</IonCardTitle>
+    <IonCardTitle color="light"> <h4>Enneagram 4 Description</h4></IonCardTitle>
   </IonCardHeader>
   <IonCardContent className="description-card-content">
     <div className="description-card-content-container">

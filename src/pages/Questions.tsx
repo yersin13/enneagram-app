@@ -67,9 +67,9 @@ const Home: React.FC = () => {
           </IonHeader>
           <IonContent fullscreen>
             <IonHeader collapse="condense">
-              <IonToolbar>
+              {/* <IonToolbar>
                 <IonTitle size="large">Nav</IonTitle>
-              </IonToolbar>
+              </IonToolbar> */}
             </IonHeader>
             <IonList>
               <div className="ion-padding">

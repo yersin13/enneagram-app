@@ -24,60 +24,69 @@ const IntroTest: React.FC = () => {
     <IonPage>
       <IonContent className="ion-padding">
         <IonSlides pager={true} options={slideOpts}>
-        <IonSlide className="intro-slide">
+          <IonSlide className="intro-slide">
 
-<div>
-  <IonCard className="home-card">
+            <div>
+              <IonCard className="home-card">
 
-    <div className="home-card-content">
-      <IonCardHeader className="home-card-header" >
+                <div className="home-card-content">
+                  <IonCardHeader className="home-card-header" >
 
-        <IonCardTitle color="light"> Enneagram Test (Riso-Hudson)</IonCardTitle>
-      </IonCardHeader>
-      <IonCardContent className="description-card-content">
-        <div className="description-card-content-container">
-          <p className="home-card-content-text">
-          Read each of the following paragraphs carefully and select the one that you most identify with. 
+                    <IonCardTitle color="light">
+                      <h4>
+                        Enneagram Test (Riso-Hudson)
+                    </h4>
+                    </IonCardTitle>
+                  </IonCardHeader>
+                  <IonCardContent className="description-card-content">
+                    <div className="description-card-content-container">
+                      <p className="home-card-content-text">
+                        Read each of the following paragraphs 
+                        carefully and select the one that 
+                        reflects your past general behaviour and attitudes.  
           </p>
-          <p className="home-card-content-text">
+                      <p className="home-card-content-text">
 
-            It is really important that when you answer you do it honestly and trying to feel which text reflects your personality the most, even though not all the text resonates with you.
+                        It is really important that when you answer 
+                        you do it honestly and trying to feel which 
+                        text reflects your personality the most, even 
+                        though not all the text resonates with you.
           </p>
-        </div>
-      </IonCardContent>
-    </div>
-  </IonCard>
-</div>
-<br />
+                    </div>
+                  </IonCardContent>
+                </div>
+              </IonCard>
+            </div>
+            <br />
 
-</IonSlide >
-<IonSlide className="intro-slide">
+          </IonSlide >
+          <IonSlide className="intro-slide">
 
-<div>
-  <IonCard className="home-card">
+            <div>
+              <IonCard className="home-card">
 
-    <div className="home-card-content">
-      <IonCardHeader className="home-card-header" >
+                <div className="home-card-content">
+                  <IonCardHeader className="home-card-header" >
 
-        <IonCardTitle color="light"> Enneagram Test (Riso-Hudson)</IonCardTitle>
-      </IonCardHeader>
-      <IonCardContent className="description-card-content">
-        <div className="description-card-content-container">
-          <p className="home-card-content-text">
-          You can leave the test at any moment but if you do you will have to start again.
+                    <IonCardTitle color="light"><h4>Enneagram Test (Riso-Hudson)</h4></IonCardTitle>
+                  </IonCardHeader>
+                  <IonCardContent className="description-card-content">
+                    <div className="description-card-content-container">
+                      <p className="home-card-content-text">
+                        You can leave the test at any moment but if you do you will have to start again.
           </p>
-          <br/>
-          <div>  
-   <IonButton className="dashboard-test-button" routerLink="/my/test" expand='block' >Let's Start</IonButton>
-   </div>
-        </div>
-      </IonCardContent>
-    </div>
-  </IonCard>
-</div>
-<br />
-</IonSlide >
-         
+                      <br />
+                      <div>
+                        <IonButton className="dashboard-test-button" routerLink="/my/test" expand='block' >Let's Start</IonButton>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </div>
+              </IonCard>
+            </div>
+            <br />
+          </IonSlide >
+
         </IonSlides>
       </IonContent>
     </IonPage>

@@ -33,6 +33,11 @@ const Dashboard: React.FC = () => {
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
 
   }, [userId]);
+
+  
+
+
+
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
 if(number == null){
   return<IonPage>
@@ -89,7 +94,7 @@ if(number == null){
                   <IonCard routerLink="/my/DescriptionEnneagram" className="dashboard-card">
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle color="light">Enneagram Description  <IonIcon icon={chevronForward}></IonIcon></IonCardTitle>
+                        <IonCardTitle className="card-title" color="light"><h4>Enneagram Description</h4>  <IonIcon icon={chevronForward}></IonIcon></IonCardTitle>
                       </IonCardHeader>
                     </div>
                   </IonCard>
@@ -103,7 +108,9 @@ if(number == null){
                   <IonCard className="dashboard-card">
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle color="light"></IonCardTitle>
+                        <IonCardTitle color="light">
+                          {/* text */}
+                        </IonCardTitle>
                       </IonCardHeader>
                     </div>
                   </IonCard>
@@ -112,7 +119,7 @@ if(number == null){
                   <IonCard  routerLink="/my/questions" className="dashboard-card">
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle color="light">Questions and Answers</IonCardTitle>
+                        <IonCardTitle color="light"><h4>Questions and Answers</h4></IonCardTitle>
                       </IonCardHeader>
                     </div>
                   </IonCard>
@@ -124,7 +131,7 @@ if(number == null){
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header">
 
-                        <IonCardTitle color="light">Tip of the Day</IonCardTitle>
+                        <IonCardTitle color="light"><h4>Tip of the Day</h4></IonCardTitle>
                       </IonCardHeader>
 
                     </div>
@@ -136,7 +143,9 @@ if(number == null){
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header" >
 
-                        <IonCardTitle color="light">Enneagra </IonCardTitle>
+                        <IonCardTitle color="light">
+                          {/* text */}
+                           </IonCardTitle>
                       </IonCardHeader>
 
                     </div>

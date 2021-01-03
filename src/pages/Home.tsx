@@ -29,7 +29,9 @@ const Home: React.FC = () => {
   const { userId, email, name } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
-  const [refresh, setRefresh] = useState<Entry[]>();
+  const [profile, setProfile] = useState<Entry[]>([]);
+  const [famousNumber, setFamousNumber] = useState("");
+
   useEffect(() => {
 
     const entriesRef = firestore.collection('users').doc(userId)
@@ -53,8 +55,6 @@ const Home: React.FC = () => {
       .then(({ docs }) => setEntry(docs.map(toEntry)));
   }, []);
 
-  //   // ------------------------>
-
   const index = entry.findIndex(x => x.id === number);
 
   console.log(index)
@@ -65,9 +65,28 @@ const Home: React.FC = () => {
   const numberType = entry.map(({ numberType }) => numberType)[index]
   const link = entry.map(({ link }) => link)[index]
 
+  //   // ------------------------>
+  // 'type', '==', `${number}`
+  // "code", "==", "all"
+  useEffect(() => {
+    const refProfile = firestore.collection('Famous')
+    refProfile.where('type', '==', `${number}`).get()
+      .then(({ docs }) => setProfile(docs.map(toEntry)));
+  }, [number])
 
 
-  console.log(title);
+
+  // const nuevo = "2"
+  // useEffect(()=>{
+  //   const refProfile = firestore.collection('famous')
+  //   refProfile.where('type', '==', `${famousNumber}`).get()
+  //   .then(({ docs }) => setProfile(docs.map(toEntry)));
+
+  // }, []);
+
+  console.log(profile)
+
+  console.log(number);
   if (title == null) {
     return <IonPage>
       <IonHeader >
@@ -111,11 +130,11 @@ const Home: React.FC = () => {
 
 
       <IonContent className="ion-padding">
-        <IonHeader className="prof-header" >
+        {/* <IonHeader className="perfil-header" >
 
-          <IonTitle className="prof-title">
-            <div className="prof-container-top">
-              <IonAvatar className="prof-avatar" >
+          <IonTitle className="perfil-title">
+            <div className="perfil-container-top">
+              <IonAvatar className="perfil-avatar" >
                 <img className="home-avatar" src={link} alt="" />
               </IonAvatar>
 
@@ -129,12 +148,68 @@ const Home: React.FC = () => {
 
           </IonTitle>
 
-        </IonHeader>
+        </IonHeader> */}
         <IonList>
 
-
+        
 
           <IonGrid className="home-grid ion-padding">
+            <IonRow className="home-row-top" >
+              <IonCol>
+                <IonCard className="home-card">
+
+                  <div className="home-card-content">
+                    
+                    <IonCardHeader className="home-card-header" >
+
+                    {/* <IonCardTitle color="light"><h5>Millionaires with your same enneagram type</h5></IonCardTitle> */}
+                      <div className="personalitie-avatar-container">
+                     
+                        {/* <IonHeader className="perfil-header" > */}
+
+                          {/* <IonTitle className="perfil-title"> */}
+                          
+                            <div className="perfil-container-top">
+                          
+                              <IonAvatar className="perfil-avatar" >
+                                <img className="home-avatar" src={link} alt="" />
+                              </IonAvatar>
+                              <h5 className="home-name">{name}</h5>
+                              <IonChip>
+                                <IonLabel color="warning">{title} "{numberType}"</IonLabel>
+                              </IonChip>
+                            </div>
+                          {/* </IonTitle> */}
+
+                        {/* </IonHeader> */}
+                        {/* <IonCardTitle color="light"><h4>Millionaires with your same enneagram type</h4></IonCardTitle> */}
+                  <div className="personalities-container">
+
+                 
+                        {profile.map((prof) =>
+
+                          <div className="personalitie1">
+                            <IonAvatar className="personalitie-avatar" slot="start">
+                              <img src={prof.link} alt="" />
+                            </IonAvatar>
+
+                            <IonLabel ><h3 className="name-personalities" >{prof.name}</h3></IonLabel>
+                            {/* <h6>{prof.net}</h6> */}
+                          </div>
+                        )}
+                         </div>
+                            <IonCardTitle color="light"><h5>Millionaires with your same enneagram type</h5></IonCardTitle>
+                      </div>
+                     
+                    </IonCardHeader>
+                    {/* <IonCardContent className="personalities-container">
+
+                    </IonCardContent> */}
+                  </div>
+
+                </IonCard>
+              </IonCol>
+            </IonRow>
             <IonRow className="home-row-top no-padding" >
               <IonCol>
                 <IonCard className="home-card">
@@ -143,7 +218,7 @@ const Home: React.FC = () => {
                     <div className="home-card-title-header">
                       <IonCardHeader className="home-card-header" >
 
-                        <IonCardTitle color="light"> Enneagram {numberType} Description</IonCardTitle>
+                        <IonCardTitle color="light"><h4>Enneagram {numberType} Description</h4> </IonCardTitle>
                       </IonCardHeader>
                     </div>
 
@@ -163,11 +238,11 @@ const Home: React.FC = () => {
                   <div className=" home-card-img-container">
                   </div>
                   <div className="home-card-content">
-                  <div className="home-card-title-header">
-                    <IonCardHeader className="home-card-header" >
+                    <div className="home-card-title-header">
+                      <IonCardHeader className="home-card-header" >
 
-                      <IonCardTitle color="light">Today's quote from {numberType} Ennetype.</IonCardTitle>
-                    </IonCardHeader>
+                        <IonCardTitle color="light"><h4>Quote from {numberType} Ennetype.</h4></IonCardTitle>
+                      </IonCardHeader>
                     </div>
                     <IonCardContent>
                       <p className="home-card-content-text">
@@ -179,45 +254,9 @@ const Home: React.FC = () => {
               </IonCol>
             </IonRow>
 
-            <IonRow className="home-row-top" >
-              <IonCol>
-                <IonCard className="home-card">
-                  <div className=" home-card-img-container">
-                  </div>
-                  <div className="home-card-content">
-                    <IonCardHeader className="home-card-header" >
 
-                      <IonCardTitle color="light">Millionaires with your same enneagram type</IonCardTitle>
-                    </IonCardHeader>
-                    <IonCardContent className="personalities-container">
-                      <div className="personalitie-avatar-container">
-                        <div className="personalitie1">
-                          <IonAvatar slot="start">
-                            <img src="../assets/personalities/deep.jpg" alt="" />
-                          </IonAvatar>
-                          <IonLabel><h2>Johnny Deep</h2></IonLabel>
-                        </div>
-                        <div className="personalitie1">
-                          <IonAvatar>
-                            <img src="../assets/personalities/marloon.jpg" alt="" />
-                          </IonAvatar>
-                          <IonLabel><h2>Marloon Bradon</h2></IonLabel>
-                        </div>
-                        <div className="personalitie1">
-                          <IonAvatar>
-                            <img src="../assets/personalities/bob.jpg" alt="" />
-                          </IonAvatar>
-                          <IonLabel className="personalitie-name"><h2>Bob Dylan</h2></IonLabel>
-                        </div>
-                      </div>
 
-                    </IonCardContent>
-                  </div>
-                </IonCard>
-              </IonCol>
-            </IonRow>
-
-            <IonRow className="home-row-top" >
+            {/* <IonRow className="home-row-top" >
               <IonCol>
                 <IonCard className="home-card">
                   <div className=" home-card-img-container">
@@ -252,7 +291,7 @@ const Home: React.FC = () => {
                   </div>
                 </IonCard>
               </IonCol>
-            </IonRow>
+            </IonRow> */}
           </IonGrid>
 
         </IonList>

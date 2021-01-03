@@ -13,7 +13,7 @@ export interface Entry {
     link:string;
     testTaken:boolean;
     name:string;
- 
+    net:string;
  
 
 }

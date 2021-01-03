@@ -87,7 +87,7 @@ http://ionicframework.com/docs/theming/ */
 
   --ion-tab-bar-background: #rrggbbaa;
 
-  --ion-background-color: #000000;
+  --ion-background-color:linear-gradient(to bottom, #020915, #020915, #020915, #010915, #010915);
   --ion-background-color-rgb: 18,18,18;
 
   --ion-text-color: #ffffff;
