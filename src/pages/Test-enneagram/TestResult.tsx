@@ -22,9 +22,9 @@ const TestResult: React.FC = () => {
 
 
   useEffect(() => {
-    // if(name == null){
-    //   window.location.reload()
-    // }
+    if(name == null){
+      window.location.reload()
+    }
     const entriesRef = firestore.collection('users').doc(userId)
       .collection('Enneagram');
     return entriesRef.orderBy('date', "desc").limit(1)
@@ -83,7 +83,7 @@ const TestResult: React.FC = () => {
                 
                 <div className="perfil-container-top">
                   <IonLabel>This avatar animal  
-                    represent the most the Qualities of your enneagram type</IonLabel>
+                    represent the most your enneagram type</IonLabel>
                     <br/>
                   <IonAvatar className="perfil-avatar" >
                     <img className="home-avatar" src={link} alt="" />

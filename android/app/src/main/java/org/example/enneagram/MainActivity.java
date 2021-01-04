@@ -1,4 +1,4 @@
-package org.example.dailymoments;
+package org.example.enneagram;
 
 import android.os.Bundle;
 

@@ -14,6 +14,7 @@ export interface Entry {
     testTaken:boolean;
     name:string;
     net:string;
+    type:string;
  
 
 }

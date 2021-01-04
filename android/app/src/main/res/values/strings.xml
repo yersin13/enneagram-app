@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Daily Moments</string>
-    <string name="title_activity_main">Daily Moments</string>
-    <string name="package_name">org.example.dailymoments</string>
-    <string name="custom_url_scheme">org.example.dailymoments</string>
+    <string name="app_name">Enneagram App</string>
+    <string name="title_activity_main">Enneagram App</string>
+    <string name="package_name">org.example.enneagram</string>
+    <string name="custom_url_scheme">org.example.enneagram</string>
 </resources>

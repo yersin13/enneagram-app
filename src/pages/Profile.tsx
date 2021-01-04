@@ -20,82 +20,68 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 import { useAuth } from '../auth';
 import { firestore } from '../firebase';
 import { Entry, toEntry } from '../models';
 
+interface RouteParams{
+  id: string;
+}
+
+
 const Profile: React.FC = () => {
 
+  
+  const {userId} =useAuth();
+  const history = useHistory();
+  const { id } = useParams<RouteParams>();
+ const [entry,setEntry]= useState<Entry>();
+ const [profile, setProfile] = useState<Entry[]>([]);
 
-  const { userId, email, name } = useAuth();
-  const [entries, setEntries] = useState<Entry[]>([]);
-  const [entry, setEntry] = useState<Entry[]>([]);
-  const [refresh, setRefresh] = useState<Entry[]>();
-  useEffect(() => {
+// const id = "nkpWwO8I3lhhxeOiZyYt"
+ 
+    
+   useEffect(()=>{
+    const entryRef = firestore.collection('Famous');
+    entryRef.where('code', '==', "all").get()
+    .then(({ docs }) => setProfile(docs.map(toEntry)));
+     
+   }, [])
 
-    const entriesRef = firestore.collection('users').doc(userId)
-      .collection('Enneagram');
-    return entriesRef.orderBy('date', "desc").limit(1)
-      .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
+const index = profile.findIndex(x => x.id === id);
 
-  }, [userId]);
-  const number = entries.map(({ Enneatype }) => Enneatype)[0]
+// console.log(id)
+//    console.log(profile)
+//    console.log(index)
 
-  // console.log(email)
-  // console.log(number)
-  // --------------------------------------->
-  // -------------------------->
-
-
-  useEffect(() => {
-
-    const entriesRefEnneagram = firestore.collection('EnneagramDescription')
-    entriesRefEnneagram.get()
-      .then(({ docs }) => setEntry(docs.map(toEntry)));
-  }, []);
-
-  //   // ------------------------>
-
-  const index = entry.findIndex(x => x.id === number);
-
-  console.log(index)
-
-  const title = entry.map(({ title }) => title)[index]
-  const quote = entry.map(({ quote }) => quote)[index]
-  const description = entry.map(({ description }) => description)[index]
-  const numberType = entry.map(({ numberType }) => numberType)[index]
-  const link = entry.map(({ link }) => link)[index]
-  // const link = "https://images.pexels.com/photos/4423596/pexels-photo-4423596.jpeg?cs=srgb&dl=pexels-claudio-olivares-medina-4423596.jpg&fm=jpg"
-
-
-
-
+   const name = profile.map(({ name }) => name)[index]
+   const type = profile.map(({ type }) => type)[index]
+   const net = profile.map(({ net }) => net)[index]
+   const link = profile.map(({ link }) => link)[index]
   return (
     <IonPage>
        
       <IonContent className="ion-padding">
-      <IonHeader className="prof-header" >
-       
-       <IonTitle className="prof-title">
-       <div className="prof-container-top">
-                       <IonAvatar className="prof-avatar" >
-                         <img className="home-avatar" src={link} alt="" />
-                       </IonAvatar>
- 
- 
-                       <h2 className="home-name">{name}</h2>
-                       <p className="home-email">{email}</p>
-                      
-                       <IonChip>
-          <IonLabel color="success">{title} "{numberType}"</IonLabel>
-        </IonChip>
-                       </div>
-                       
-                       
-                       
-       </IonTitle>
-    
-       </IonHeader>
+      <IonHeader className="perfil-header" >
+
+          <IonTitle className="perfil-title">
+            <div className="perfil-container-top">
+              <IonAvatar className="perfil-avatar" >
+                <img className="home-avatar" src={link} alt="" />
+              </IonAvatar>
+
+
+              <h5 className="home-name">{name}</h5>
+              <IonChip>
+                <IonLabel color="primary">"Enneagram type {type}"</IonLabel>
+              </IonChip>
+
+            </div>
+
+          </IonTitle>
+
+        </IonHeader>
  
         <IonList>
           <IonItem>
@@ -113,11 +99,11 @@ const Profile: React.FC = () => {
                     <div className="home-card-content">
                       <IonCardHeader className="home-card-header" >
 
-                        <IonCardTitle color="light"> Enneagram {numberType} Description</IonCardTitle>
+                        <IonCardTitle color="light"> Enneagram {type} Description</IonCardTitle>
                       </IonCardHeader>
                       <IonCardContent>
                         <p className="home-card-content-text">
-                          {description}
+                          {net}
                         </p>
                       </IonCardContent>
                     </div>

@@ -48,13 +48,20 @@ const AppTabs: React.FC = () => {
       <Route exact path="/my/home">
         <Home/>
       </Route>
-   
+
+      <Route exact path="/my/personalities/:id">
+        <Profile/>
+      </Route>
+      
       <Route exact path="/my/entries/add">
         <AddEntryPage/>
       </Route>
-      <Route exact path="/my/settings">
+      {/* <Route exact path="/my/settings">
+        <Profile/>
+      </Route> */}
+      {/* <Route exact path="/my/settings">
         <SettingsPage/>
-      </Route>
+      </Route> */}
       <Route exact path="/my/name-change">
         <NameChange/>
       </Route>

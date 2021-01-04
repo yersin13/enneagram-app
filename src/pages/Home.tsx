@@ -40,8 +40,8 @@ const Home: React.FC = () => {
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
 
   }, [userId]);
-  const number = entries.map(({ Enneatype }) => Enneatype)[0]
-
+  // const number = entries.map(({ Enneatype }) => Enneatype)[0]
+  const number ="9"
   // console.log(email)
   // console.log(number)
   // --------------------------------------->
@@ -57,13 +57,14 @@ const Home: React.FC = () => {
 
   const index = entry.findIndex(x => x.id === number);
 
-  console.log(index)
+  // console.log(index)
 
   const title = entry.map(({ title }) => title)[index]
   const quote = entry.map(({ quote }) => quote)[index]
   const description = entry.map(({ description }) => description)[index]
   const numberType = entry.map(({ numberType }) => numberType)[index]
   const link = entry.map(({ link }) => link)[index]
+
 
   //   // ------------------------>
   // 'type', '==', `${number}`
@@ -76,17 +77,9 @@ const Home: React.FC = () => {
 
 
 
-  // const nuevo = "2"
-  // useEffect(()=>{
-  //   const refProfile = firestore.collection('famous')
-  //   refProfile.where('type', '==', `${famousNumber}`).get()
-  //   .then(({ docs }) => setProfile(docs.map(toEntry)));
+  // console.log(profile)
 
-  // }, []);
-
-  console.log(profile)
-
-  console.log(number);
+  // console.log(number);
   if (title == null) {
     return <IonPage>
       <IonHeader >
@@ -130,79 +123,68 @@ const Home: React.FC = () => {
 
 
       <IonContent className="ion-padding">
-        {/* <IonHeader className="perfil-header" >
 
-          <IonTitle className="perfil-title">
-            <div className="perfil-container-top">
-              <IonAvatar className="perfil-avatar" >
-                <img className="home-avatar" src={link} alt="" />
-              </IonAvatar>
-
-
-              <h5 className="home-name">{name}</h5>
-              <IonChip>
-                <IonLabel color="primary">{title} "{numberType}"</IonLabel>
-              </IonChip>
-
-            </div>
-
-          </IonTitle>
-
-        </IonHeader> */}
         <IonList>
 
-        
+
 
           <IonGrid className="home-grid ion-padding">
             <IonRow className="home-row-top" >
               <IonCol>
+
                 <IonCard className="home-card">
 
                   <div className="home-card-content">
-                    
+
                     <IonCardHeader className="home-card-header" >
 
-                    {/* <IonCardTitle color="light"><h5>Millionaires with your same enneagram type</h5></IonCardTitle> */}
                       <div className="personalitie-avatar-container">
-                     
-                        {/* <IonHeader className="perfil-header" > */}
+                        <div className="perfil-container-top">
 
-                          {/* <IonTitle className="perfil-title"> */}
-                          
-                            <div className="perfil-container-top">
-                          
-                              <IonAvatar className="perfil-avatar" >
-                                <img className="home-avatar" src={link} alt="" />
-                              </IonAvatar>
-                              <h5 className="home-name">{name}</h5>
-                              <IonChip>
-                                <IonLabel color="warning">{title} "{numberType}"</IonLabel>
-                              </IonChip>
-                            </div>
-                          {/* </IonTitle> */}
+                          <IonAvatar className="perfil-avatar" >
+                            <img className="home-avatar" src={link} alt="" />
+                          </IonAvatar>
+                          <h5 className="home-name">{name}</h5>
+                          <IonChip>
+                            <IonLabel color="warning">{title} "{numberType}"</IonLabel>
+                          </IonChip>
+                        </div>
+     
 
-                        {/* </IonHeader> */}
-                        {/* <IonCardTitle color="light"><h4>Millionaires with your same enneagram type</h4></IonCardTitle> */}
-                        <IonCardTitle color="light"  className="personalities-subtitle">Millionaires with your same enneagram type</IonCardTitle>
-                  <div className="personalities-container">
+                        {/* <IonCardTitle color="light"  className="personalities-subtitle">Millionaires with your same enneagram type</IonCardTitle> */}
+                        {/* <div className="personalities-container"> */}
 
-                 
-                        {profile.map((prof) =>
 
-                          <div className="personalitie1">
-                            <IonAvatar className="personalitie-avatar" slot="start">
-                              <img src={prof.link} alt="" />
-                            </IonAvatar>
+                          {profile.map((prof) =>
+                          // <div className="personalities-small-container">
 
-                            <IonLabel className="name-personalities" >{prof.name}</IonLabel>
-                            {/* <h6>{prof.net}</h6> */}
-                          </div>
-                        )}
-                        
-                         </div>
+                         
+                            <IonItem className="personalitie-item-link" lines="none" button routerLink={`/my/personalities/${prof.id}`}  >
+                              <div className="personalities-item-div">
+
                             
+                              <div className="personalitie1" >
+                                 
+                                <IonAvatar className="personalitie-avatar" slot="start">
+                                  <img src={prof.link} alt="" />
+                                </IonAvatar>
+                                </div>
+
+                                <div className="personalitie-name-container" >
+                                <IonLabel className="name-personalities" ><h5>{prof.name}</h5></IonLabel>
+                                </div>
+                                </div>
+                               
+
+                              
+                           </IonItem>
+                          //  </div>
+                          )}
+
+                        {/* </div> */}
+
                       </div>
-                     
+
                     </IonCardHeader>
                     {/* <IonCardContent className="personalities-container">
 

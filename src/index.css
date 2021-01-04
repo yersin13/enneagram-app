@@ -339,6 +339,8 @@ margin: 0;
   /* flex-direction: row; */
   flex-wrap: wrap;
   justify-content: center;
+    background-color: rgba(43, 42, 4, 0.082);
+    border-radius: 15px;
 
 }
 .personalitie1{
@@ -347,16 +349,42 @@ margin: 0;
   display: flex;
   flex-direction: column;
   padding: 5px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  padding: 15px 15px 5px 15px;
+  /* padding: 15px 15px 15px 15px; */
+  /* word-wrap: break-word; */
+}
+
+.personalitie-item-link{
+  padding: 0;
+  margin: 0;
+  display:flex;
+
+  /* width: 100px; */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .personalities-container{
-  padding: 10;
+  /* padding: 10; */
   display: flex;
-  /* background-color: rgba(29, 31, 7, 0.5); */
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgba(126, 122, 122, 0.24); */
   border-radius: 15px;
+}
+.personalities-item-div{
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
 }
 .personalitie-avatar{
   box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.55);
@@ -364,20 +392,38 @@ margin: 0;
   -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.55);
   width: 70px;
   height: 70px;
+  margin: 0;
+  padding: 0;
 }
-
+.personalitie-name-container{ 
+  /* width: 50px;
+  height: 30px;
+  word-wrap: break-word; */
+  /* block-size: fit-content; */
+  width: fit-content;
+}
 .name-personalities{
   color: rgba(255, 255, 255, 0.815);
-  font-weight: bold;
-  padding-top: 7px;
-  text-shadow: 2px 2px #4d4b4b54;
-
+  /* font-weight: bold; */
+  /* width: 70px; */
+  height: 30px;
+  font-size: 2px;
+  width: fit-content;
+  justify-content: center;
+  block-size: fit-content;
+  word-wrap: break-word;
+  /* display: flex; */
+  /* flex-direction: column; */
+  padding-bottom: 7px;
+  text-shadow: 1px 1px #4d4b4b54;
+text-align: center;
 }
 .personalities-subtitle{
-  font-size: 12px;
+  font-size: 20px;
+  text-align: center;
   font-weight:normal;
   color: rgb(224, 218, 218);
-  text-shadow: 2px 2px #4d4b4b54;
+  /* text-shadow: 2px 2px #4d4b4b54; */
 }
 
 /* Description Enneagram css */
