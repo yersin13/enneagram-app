@@ -128,8 +128,8 @@ const Home: React.FC = () => {
 
 
 
-          <IonGrid className="home-grid ion-padding">
-            <IonRow className="home-row-top" >
+          <IonGrid className="home-grid no-padding">
+            <IonRow className="home-row-top no-padding" >
               <IonCol>
 
                 <IonCard className="home-card">
@@ -171,7 +171,7 @@ const Home: React.FC = () => {
                                 </div>
 
                                 <div className="personalitie-name-container" >
-                                <IonLabel className="name-personalities" ><h5>{prof.name}</h5></IonLabel>
+                                <p className="name-personalities" >{prof.name}</p>
                                 </div>
                                 </div>
                                
