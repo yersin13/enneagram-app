@@ -40,8 +40,8 @@ const Home: React.FC = () => {
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
 
   }, [userId]);
-  // const number = entries.map(({ Enneatype }) => Enneatype)[0]
-  const number ="9"
+  const number = entries.map(({ Enneatype }) => Enneatype)[0]
+  // const number ="9"
   // console.log(email)
   // console.log(number)
   // --------------------------------------->
