@@ -15,6 +15,9 @@ export interface Entry {
     name:string;
     net:string;
     type:string;
+    quote1:string;
+    quote2:string;
+    hl:string;
  
 
 }

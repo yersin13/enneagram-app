@@ -41,7 +41,7 @@ const Home: React.FC = () => {
 
   }, [userId]);
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
-  // const number ="9"
+  // const number ="3"
   // console.log(email)
   // console.log(number)
   // --------------------------------------->
