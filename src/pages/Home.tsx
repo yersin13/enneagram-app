@@ -30,7 +30,7 @@ const Home: React.FC = () => {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
   const [profile, setProfile] = useState<Entry[]>([]);
-  const [famousNumber, setFamousNumber] = useState("");
+
 
   useEffect(() => {
 
@@ -40,8 +40,8 @@ const Home: React.FC = () => {
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
 
   }, [userId]);
-  const number = entries.map(({ Enneatype }) => Enneatype)[0]
-  // const number ="3"
+  // const number = entries.map(({ Enneatype }) => Enneatype)[0]
+  const number ="1"
   // console.log(email)
   // console.log(number)
   // --------------------------------------->
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
 
 
   useEffect(() => {
-
+    console.log(Math.round(Math.random() * 10))
     const entriesRefEnneagram = firestore.collection('EnneagramDescription')
     entriesRefEnneagram.get()
       .then(({ docs }) => setEntry(docs.map(toEntry)));

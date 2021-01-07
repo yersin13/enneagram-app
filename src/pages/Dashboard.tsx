@@ -1,6 +1,8 @@
 import {
+  IonAvatar,
   IonButton,
   IonCard,
+  IonCardContent,
   IonCardHeader,
   IonCardTitle,
   IonCol,
@@ -8,6 +10,8 @@ import {
   IonGrid,
   IonHeader,
   IonIcon,
+  IonItem,
+  IonList,
   IonPage,
   IonRow,
   IonTitle,
@@ -17,16 +21,18 @@ import { chevronForward } from 'ionicons/icons'
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../auth';
 import { firestore } from '../firebase';
-import { Entry, toEntry  } from '../models';
+import { Entry, toEntry } from '../models';
 
 const Dashboard: React.FC = () => {
 
-  const { userId, email , name } = useAuth();
+  const { userId, email, name } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
   const [entry, setEntry] = useState<Entry[]>([]);
   const [refresh, setRefresh] = useState<Entry[]>();
+  const [profile, setProfile] = useState<Entry[]>([]);
+
   useEffect(() => {
-  
+
     const entriesRef = firestore.collection('users').doc(userId)
       .collection('Enneagram');
     return entriesRef.orderBy('date', "desc").limit(1)
@@ -34,45 +40,53 @@ const Dashboard: React.FC = () => {
 
   }, [userId]);
 
-  
 
+  const index = Math.round(Math.random() * 53);
 
+  useEffect(() => {
+    const refProfile = firestore.collection('Famous')
+    refProfile.get()
+      .then(({ docs }) => setProfile(docs.map(toEntry)));
+  }, [])
+
+  console.log(index)
 
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
-if(number == null){
-  return<IonPage>
-    <IonHeader >
+// const number = null
+  const TodayQuote = profile.map(({ quote1 }) => quote1)[index]
+  const autor = profile.map(({ name }) => name)[index]
+  const type = profile.map(({ type }) => type)[index]
+
+  if (number == null) {
+    return <IonPage>
+      <IonHeader >
         <IonToolbar className="header">
-          <IonTitle>Your Dashboard
-          </IonTitle>
+         
         </IonToolbar>
       </IonHeader>
-    <IonContent>
-    
-        <div className="dashboard-grid-container  ">
-          
-          <IonGrid className="dashboard-grid">
-            <IonRow className="dashboard-row-top" >
-              <IonCol className="ion-padding" >
-              <div className="ion-padding">
-          <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test</IonButton>
+      <IonContent>
+      <IonList>
+        
+             <IonItem lines="none" className="dashboard-item-preview ion-padding">
+               <IonCard className="dashboard-card-preview">
+                 <div className="dashboard-div-preview">
+                 <IonCardHeader  className="dashboard-cardheader-preview">
+                <p className="preview-text">What type of Millionaire are you?</p>
+                <div className="dashboard-div-button-preview">
+          <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test and see.</IonButton>
         </div>
-                <div className="dashboard-card-container">
-                  <IonCard routerLink="/my/DescriptionEnneagram" className="dashboard-card">
-                    <div className="dashboard-card-content">
-                      <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle color="light">Enneagram Description  <IonIcon icon={chevronForward}></IonIcon></IonCardTitle>
-                      </IonCardHeader>
-                    </div>
-                  </IonCard>
-                </div>
-              </IonCol>
-            </IonRow>
-            </IonGrid>
-            </div>
-    </IonContent>
-  </IonPage>
-}
+                </IonCardHeader>
+                 </div>
+               
+                 
+               </IonCard>
+             </IonItem>
+            
+          
+          </IonList>
+      </IonContent>
+    </IonPage>
+  }
   return (
     <IonPage >
 
@@ -101,61 +115,54 @@ if(number == null){
                 </div>
               </IonCol>
             </IonRow>
-            {/* -------------  */}
-            <IonRow className="dashboard-row-bottom" >
-              <IonCol size="6">
-                <div className="dashboard-card-left1">
-                  <IonCard className="dashboard-card">
-                    <div className="dashboard-card-content">
-                      <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle color="light">
-                          {/* text */}
-                        </IonCardTitle>
-                      </IonCardHeader>
+            <IonRow className="dashboard-row-top" >
+              {/* <IonCol>
+                <div className="dashboard-card-container">
+                 
+                    <div className="dashboard-card-content-quote">
+                    <p className="quote-text"> {TodayQuote}</p>
+                          <p className="quote-text-name">{autor} "{type}"</p>
+                         
                     </div>
-                  </IonCard>
+                   
                 </div>
-                <div className="dashboard-card-left2">
-                  <IonCard  routerLink="/my/questions" className="dashboard-card">
-                    <div className="dashboard-card-content">
-                      <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle color="light"><h4>Questions and Answers</h4></IonCardTitle>
-                      </IonCardHeader>
-                    </div>
-                  </IonCard>
-                </div>
-              </IonCol>
-              <IonCol size="6">
-                <div className="dashboard-card-right1">
-                  <IonCard className="dashboard-card">
-                    <div className="dashboard-card-content">
-                      <IonCardHeader className="dashboard-card-header">
+              </IonCol> */}
+              <IonList>
+              <IonCard className="dashboard-card-personalities">
 
-                        <IonCardTitle color="light"><h4>Tip of the Day</h4></IonCardTitle>
-                      </IonCardHeader>
+<div className="dashboard-container-personalities">
 
-                    </div>
-                  </IonCard>
-                </div>
-                <div className="dashboard-card-right2">
-                  <IonCard className="dashboard-card">
+              {profile.map((prof) =>
+                          // <div className="personalities-small-container">
 
-                    <div className="dashboard-card-content">
-                      <IonCardHeader className="dashboard-card-header" >
+                         
+                            <IonItem className="personalitie-item-link" lines="none" button routerLink={`/my/personalities/${prof.id}`}  >
+                              <div className="personalities-item-div">
 
-                        <IonCardTitle color="light">
-                          {/* text */}
-                           </IonCardTitle>
-                      </IonCardHeader>
+                            
+                              <div className="personalitie1" >
+                                 
+                                <IonAvatar className="personalitie-avatar" slot="start">
+                                  <img src={prof.link} alt="" />
+                                </IonAvatar>
+                                </div>
 
-                    </div>
-                  </IonCard>
-                </div>
+                                <div className="personalitie-name-container" >
+                                <p className="name-personalities" >{prof.name}</p>
+                                </div>
+                                </div>
+                               
 
-
-              </IonCol>
-
+                              
+                           </IonItem>
+                          //  </div>
+                          )}
+                          </div>
+                          </IonCard>
+              </IonList>
             </IonRow>
+            {/* -------------  */}
+           
           </IonGrid>
         </div>
 
