@@ -532,9 +532,9 @@ padding: 20px;
   align-items: center;
   padding-bottom: 30px;
 }
-.perfil-title{
+/* .perfil-title{
   height: 100%;
-}
+} */
 
 .perfil-avatar{
   width: 100px;
@@ -577,7 +577,7 @@ font-weight: bold;
 
 /* Profile Css */
 .profile-list{
-  height: 150vh;
+  height:fit-content;
 }
 .profile-container{
  

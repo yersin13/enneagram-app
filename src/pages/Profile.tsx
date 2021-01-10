@@ -143,27 +143,7 @@ const Profile: React.FC = () => {
               </IonCard>
             </IonGrid>
           </IonItem>
-          <IonItem lines="none">
-            <IonGrid className="home-grid">
-
-              <IonCard className="home-card">
-
-                <div className="home-card-content">
-
-
-                  <p className="profile-description">Achievements</p>
-
-                  <IonCardContent className="profile-card-content">
-
-                    <p className="home-card-content-text">
-                      {hl}
-                    </p>
-                  </IonCardContent>
-                </div>
-              </IonCard>
-
-            </IonGrid>
-          </IonItem>
+         
   
           <IonItem lines="none"  >
 

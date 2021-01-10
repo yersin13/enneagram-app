@@ -21,7 +21,9 @@ export interface Entry {
     icon:string;
     color:string;
     triad:string;
- 
+    careers:string;
+    str:string;
+    wks:string;
 
 }
 

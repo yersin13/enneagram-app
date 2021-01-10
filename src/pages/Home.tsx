@@ -41,7 +41,7 @@ const Home: React.FC = () => {
 
   }, [userId]);
   const number = entries.map(({ Enneatype }) => Enneatype)[0]
-  // const number ="9"
+  // const number ="1"
   // console.log(email)
   // console.log(number)
   // --------------------------------------->
@@ -60,10 +60,12 @@ const Home: React.FC = () => {
   // console.log(index)
 
   const title = entry.map(({ title }) => title)[index]
-  const quote = entry.map(({ quote }) => quote)[index]
+  const careers = entry.map(({ careers }) => careers)[index]
   const description = entry.map(({ description }) => description)[index]
   const numberType = entry.map(({ numberType }) => numberType)[index]
   const link = entry.map(({ link }) => link)[index]
+  const str = entry.map(({ str }) => str)[index]
+  const wks = entry.map(({ wks }) => wks)[index]
 
 
   //   // ------------------------>
@@ -199,12 +201,12 @@ const Home: React.FC = () => {
                 <IonCard className="home-card">
 
                   <div className="home-card-content">
-                    <div className="home-card-title-header">
+                    {/* <div className="home-card-title-header"> */}
                       <IonCardHeader className="home-card-header" >
 
-                        <IonCardTitle color="light"><h4>Enneagram {numberType} Description</h4> </IonCardTitle>
+                        <IonCardTitle color="light"><h4>Enneagram type {numberType} Description</h4> </IonCardTitle>
                       </IonCardHeader>
-                    </div>
+                    {/* </div> */}
 
                     <IonCardContent>
                       <p className="home-card-content-text">
@@ -215,6 +217,46 @@ const Home: React.FC = () => {
                 </IonCard>
               </IonCol>
             </IonRow>
+            {/* ------------ */}
+            <IonRow className="home-row-top " >
+              <IonCol>
+                <IonCard className="home-card">
+                  <div className=" home-card-img-container">
+                  </div>
+                  <div className="home-card-content">
+                  <IonCardHeader className="home-card-header" >
+
+                        <IonCardTitle color="light">Strengths </IonCardTitle>
+                      </IonCardHeader>
+                    <IonCardContent>
+                      <p className="home-card-content-text">
+                        {str}
+                      </p>
+                    </IonCardContent>
+                  </div>
+                </IonCard>
+              </IonCol>
+            </IonRow>
+            <IonRow className="home-row-top " >
+              <IonCol>
+                <IonCard className="home-card">
+                  <div className=" home-card-img-container">
+                  </div>
+                  <div className="home-card-content">
+                  <IonCardHeader className="home-card-header" >
+
+                        <IonCardTitle color="light">Weaknesses </IonCardTitle>
+                      </IonCardHeader>
+                    <IonCardContent>
+                      <p className="home-card-content-text">
+                        {wks}
+                      </p>
+                    </IonCardContent>
+                  </div>
+                </IonCard>
+              </IonCol>
+            </IonRow>
+{/* ---------------------------- */}
 
             <IonRow className="home-row-top " >
               <IonCol>
@@ -222,15 +264,15 @@ const Home: React.FC = () => {
                   <div className=" home-card-img-container">
                   </div>
                   <div className="home-card-content">
-                    <div className="home-card-title-header">
+                    {/* <div className="home-card-title-header"> */}
                       <IonCardHeader className="home-card-header" >
 
-                        <IonCardTitle color="light"><h4>Quote from {numberType} Ennetype.</h4></IonCardTitle>
+                        <IonCardTitle color="light"><h4>Enneagram type {numberType} careers.</h4></IonCardTitle>
                       </IonCardHeader>
-                    </div>
+                    {/* </div> */}
                     <IonCardContent>
                       <p className="home-card-content-text">
-                        {quote}
+                        {careers}
                       </p>
                     </IonCardContent>
                   </div>
