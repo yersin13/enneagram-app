@@ -18,6 +18,9 @@ export interface Entry {
     quote1:string;
     quote2:string;
     hl:string;
+    icon:string;
+    color:string;
+    triad:string;
  
 
 }

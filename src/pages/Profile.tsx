@@ -25,7 +25,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { cashOutline } from 'ionicons/icons';
+import { cashOutline, heart,flashOutline,heartOutline, glassesOutline} from 'ionicons/icons';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { useAuth } from '../auth';
@@ -45,6 +45,7 @@ const Profile: React.FC = () => {
   const { id } = useParams<RouteParams>();
   const [entry, setEntry] = useState<Entry>();
   const [profile, setProfile] = useState<Entry[]>([]);
+  const [icontype, setIconType]= useState<any>();
 
   // const id = "nkpWwO8I3lhhxeOiZyYt"
 
@@ -75,6 +76,21 @@ const Profile: React.FC = () => {
   const quote2 = profile.map(({ quote2 }) => quote2)[index]
   const hl = profile.map(({ hl }) => hl)[index]
   const description = profile.map(({ description }) => description)[index]
+  // const icontype = profile.map(({ icon }) => icon)[index]
+  const colortype = profile.map(({ color }) => color)[index]
+  const triad = profile.map(({ triad }) => triad)[index]
+
+  useEffect(() => {
+   if(triad == "gut"){
+    setIconType(flashOutline)
+   }else if(triad == "heart"){
+    setIconType(heartOutline)
+   }else if(triad == "head"){
+    setIconType(glassesOutline)
+   }
+
+  }, [triad])
+
   return (
     <IonPage>
 
@@ -92,11 +108,13 @@ const Profile: React.FC = () => {
 
               <h5 className="home-name">{name}</h5>
               <IonChip>
-                <IonLabel color="primary">"Enneagram type {type}"</IonLabel>
+                <IonLabel color="primary">"Enneagram type {type}"&nbsp;<IonIcon color={colortype} icon={icontype}></IonIcon> </IonLabel>
               </IonChip>
+              
               <div className="profile-net-div">
                 <IonIcon icon={cashOutline} color="primary" />
                 <IonLabel className="profile-net-text" color="primary">NWV {net}</IonLabel>
+              
               </div>
 
 

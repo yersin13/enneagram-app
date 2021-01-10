@@ -17,7 +17,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { chevronForward } from 'ionicons/icons'
+import { chevronForward, flash, flashlight, flashOutline, glasses, glassesOutline, headsetOutline, heart, heartOutline } from 'ionicons/icons'
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../auth';
 import { firestore } from '../firebase';
@@ -25,10 +25,8 @@ import { Entry, toEntry } from '../models';
 
 const Dashboard: React.FC = () => {
 
-  const { userId, email, name } = useAuth();
+  const { userId } = useAuth();
   const [entries, setEntries] = useState<Entry[]>([]);
-  const [entry, setEntry] = useState<Entry[]>([]);
-  const [refresh, setRefresh] = useState<Entry[]>();
   const [profile, setProfile] = useState<Entry[]>([]);
 
   useEffect(() => {
@@ -59,31 +57,28 @@ const Dashboard: React.FC = () => {
 
   if (number == null) {
     return <IonPage>
-      <IonHeader >
-        <IonToolbar className="header">
-         
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-      <IonList>
-        
-             <IonItem lines="none" className="dashboard-item-preview ion-padding">
-               <IonCard className="dashboard-card-preview">
-                 <div className="dashboard-div-preview">
-                 <IonCardHeader  className="dashboard-cardheader-preview">
-                <p className="preview-text">What type of Millionaire are you?</p>
-                <div className="dashboard-div-button-preview">
-          <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test and see.</IonButton>
-        </div>
-                </IonCardHeader>
-                 </div>
+     
+      <IonContent className="dashboard-content-preview">
+      <IonRow className="home-row-top no-padding" >
+              <IonCol>
+                <IonCard className="dashboard-card-preview">
+
                
-                 
-               </IonCard>
-             </IonItem>
-            
-          
-          </IonList>
+                    <div className="home-card-title-header">
+                      <IonCardHeader className="dashboard-cardheader-preview" >
+
+                      <p className="preview-text">What type of Millionaire are you?</p>
+                      <div>
+          <IonButton className="dashboard-test-button" routerLink="/my/intro-test" expand='block' >Take the Enneagram test</IonButton>
+        </div>
+                      </IonCardHeader>
+                      
+                    </div>
+
+                  
+                </IonCard>
+              </IonCol>
+            </IonRow>
       </IonContent>
     </IonPage>
   }
@@ -108,7 +103,21 @@ const Dashboard: React.FC = () => {
                   <IonCard routerLink="/my/DescriptionEnneagram" className="dashboard-card">
                     <div className="dashboard-card-content">
                       <IonCardHeader className="dashboard-card-header" >
-                        <IonCardTitle className="card-title" color="light"><h4>Enneagram Description</h4>  <IonIcon icon={chevronForward}></IonIcon></IonCardTitle>
+                        <IonCardTitle className="card-title" color="light"><h4>Enneagram Description</h4>  <IonIcon  icon={chevronForward}></IonIcon></IonCardTitle>
+                      </IonCardHeader>
+                    </div>
+                  </IonCard>
+                </div>
+              </IonCol>
+            </IonRow>
+
+            <IonRow className="dashboard-row-top" >
+              <IonCol>
+                <div className="triad-card-container">
+                  <IonCard routerLink="/my/Thegut" className="dashboard-card">
+                    <div className="triad-card-content">
+                      <IonCardHeader className="dashboard-card-header" >
+                        <IonCardTitle className="card-title" color="light"><IonIcon color="success" icon={flash}> </IonIcon><h4>&nbsp; The Gut</h4>  </IonCardTitle>
                       </IonCardHeader>
                     </div>
                   </IonCard>
@@ -116,18 +125,36 @@ const Dashboard: React.FC = () => {
               </IonCol>
             </IonRow>
             <IonRow className="dashboard-row-top" >
-              {/* <IonCol>
-                <div className="dashboard-card-container">
-                 
-                    <div className="dashboard-card-content-quote">
-                    <p className="quote-text"> {TodayQuote}</p>
-                          <p className="quote-text-name">{autor} "{type}"</p>
-                         
+              <IonCol>
+                <div className="triad-card-container">
+                  <IonCard routerLink="/my/TheHeart" className="dashboard-card">
+                    <div className="triad-card-content">
+                      <IonCardHeader className="dashboard-card-header" >
+                        <IonCardTitle className="card-title" color="light"><IonIcon color="danger" icon={heart}> </IonIcon><h4>&nbsp; The Heart</h4>  </IonCardTitle>
+                      </IonCardHeader>
                     </div>
-                   
+                  </IonCard>
                 </div>
-              </IonCol> */}
-              <IonList>
+              </IonCol>
+            </IonRow>
+            <IonRow className="dashboard-row-top" >
+              <IonCol>
+                <div className="dashboard-card-container">
+                  <IonCard routerLink="/my/Thehead" className="dashboard-card">
+                    <div className="triad-card-content">
+                      <IonCardHeader className="dashboard-card-header" >
+                        <IonCardTitle className="card-title" color="light"><IonIcon color="secondary" icon={glasses}> </IonIcon><h4>&nbsp; The Head</h4>  </IonCardTitle>
+                      </IonCardHeader>
+                    </div>
+                  </IonCard>
+                </div>
+              </IonCol>
+            </IonRow>
+
+            <IonRow className="dashboard-row-top" >
+             
+             
+              {/* <IonList>
               <IonCard className="dashboard-card-personalities">
 
 <div className="dashboard-container-personalities">
@@ -159,7 +186,7 @@ const Dashboard: React.FC = () => {
                           )}
                           </div>
                           </IonCard>
-              </IonList>
+              </IonList> */}
             </IonRow>
             {/* -------------  */}
            

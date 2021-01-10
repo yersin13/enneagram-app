@@ -6,7 +6,9 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonContent,
+  IonGrid,
   IonHeader,
+  IonList,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -32,6 +34,10 @@ const DescriptionEnneagram: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
+        <IonGrid>
+          <IonList>
+
+       
       <IonCard className="home-card">
 
 <div className="home-card-content">
@@ -53,6 +59,8 @@ const DescriptionEnneagram: React.FC = () => {
   </IonCardContent>
 </div>
 </IonCard>
+</IonList>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );

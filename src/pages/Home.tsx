@@ -40,8 +40,8 @@ const Home: React.FC = () => {
       .onSnapshot(({ docs }) => setEntries(docs.map(toEntry)));
 
   }, [userId]);
-  // const number = entries.map(({ Enneatype }) => Enneatype)[0]
-  const number ="1"
+  const number = entries.map(({ Enneatype }) => Enneatype)[0]
+  // const number ="9"
   // console.log(email)
   // console.log(number)
   // --------------------------------------->
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
                 <IonCardHeader className="home-card-header" >
 
                   <IonCardTitle className="home-title-card-title" color="light">
-                    <h3>Please Take the Test so we can display your personalised information.</h3>
+                    <h3>Please Take the Test so we can display your personalized information.</h3>
                   </IonCardTitle>
 
                 </IonCardHeader>

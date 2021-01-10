@@ -17,6 +17,12 @@ import Profile from './pages/Profile';
 import Questions from './pages/Questions';
 
 import NameChange from './pages/NameChange';
+import TheHeart from './pages/TheHeart';
+import TheGut from './pages/TheGut';
+import TheHead from './pages/TheHead';
+
+
+
 
 
 
@@ -40,6 +46,15 @@ const AppTabs: React.FC = () => {
       </Route>
       <Route exact path="/my/DescriptionEnneagram">
         <DescriptionEnneagram/>
+      </Route>
+      <Route exact path="/my/TheHeart">
+        <TheHeart/>
+      </Route>
+      <Route exact path="/my/TheGut">
+        <TheGut/>
+      </Route>
+      <Route exact path="/my/TheHead">
+        <TheHead/>
       </Route>
      
       <Route exact path="/my/test">
